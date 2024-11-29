@@ -13,7 +13,7 @@ public class BeastPlayerMovement : PlayerMovement
     protected override void FixedUpdate()
     {
         isGrounded = rb.IsTouchingLayers();
-
+        
         if (isDodging)
         {
             PerformDodge();
