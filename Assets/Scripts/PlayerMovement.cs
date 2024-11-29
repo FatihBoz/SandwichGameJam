@@ -1,17 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;
-    [SerializeField] private float jumpSpeed;
-    bool isGrounded;
+    [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float jumpSpeed;
+    protected bool isGrounded;
 
-    private Rigidbody2D rb;
-
-    bool canAttack = true;
+    protected Rigidbody2D rb;
 
     private void Awake()
     {
@@ -20,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    private void Move()
+    protected virtual void Move()
     {
         float moveDir = InputReceiver.Instance.GetBeastPlayerMoveDirection();
 
@@ -29,13 +24,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private void Jump()
+    protected void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpSpeed);
     }
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         isGrounded = rb.IsTouchingLayers();
 
