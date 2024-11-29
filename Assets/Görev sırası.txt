@@ -1,0 +1,5 @@
+-iyi karakter mekanikleri - Movement,Build
+-Kötü karakter mekanikleri - Attack
+(Movement scriptleri ayný veya kalýtýlmýþ)
+
+-Arrow tower(dümdüz bir þekilde menzilindeki düþmana ok atar)
