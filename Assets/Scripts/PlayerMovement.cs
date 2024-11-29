@@ -12,9 +12,6 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
-
-
     protected virtual void Move()
     {
         float moveDir = InputReceiver.Instance.GetBeastPlayerMoveDirection();
