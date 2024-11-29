@@ -4,13 +4,11 @@ using System.Collections.Generic;
 
 public class ShooterTower : MonoBehaviour
 {
-    [Header("Kule Ayarlarý")]
+    [Header("Tower Options")]
     public GameObject firePoint; // Ateþ noktasý
     public GameObject projectilePrefab; // Fýrlatýlacak obje
     public float projectileSpeed = 0.1f; // Obje fýrlatma hýzý
     public float fireRate = 1f; // Ateþ etme sýklýðý
-
-    [Header("Menzil Ayarlarý")]
     public float detectionRange = 5f; // Menzil
 
     private float nextFireTime = 0f; // Ateþ etme zamaný
