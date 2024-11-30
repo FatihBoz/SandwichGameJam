@@ -54,7 +54,7 @@ public class CycleManager : MonoBehaviour
 
         }
         isMorning = !isMorning;
-        dayText.text = $"{(isMorning ? "Morning" : "Night")} Day : {dayCount}";
+        dayText.text = $"{(isMorning ? "Morning" : "Night")} / Day : {dayCount}";
         UpdateSprites();
     }
 
