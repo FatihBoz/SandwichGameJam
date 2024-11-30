@@ -32,6 +32,7 @@ public class BeastPlayerMovement : PlayerMovement
         }
 
         Move();
+        RotatePlayer();
         Animate();
     }
 
@@ -41,6 +42,19 @@ public class BeastPlayerMovement : PlayerMovement
 
         rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
     }
+
+    protected override void RotatePlayer()
+    {
+        if (rb.velocity.x > 0.1f)
+        {
+            transform.localScale = new(playerScale, playerScale);
+        }
+        else if (rb.velocity.x < -0.1f)
+        {
+            transform.localScale = new(-playerScale, playerScale);
+        }
+    }
+
 
     private void PerformDodge()
     {

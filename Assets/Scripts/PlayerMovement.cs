@@ -13,18 +13,36 @@ public class PlayerMovement : MonoBehaviour
 
     protected Rigidbody2D rb;
     protected Animator animator;
+    protected float playerScale;
+    protected bool isRunning;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        playerScale = transform.localScale.x;  
     }
     protected virtual void Move()
     {
-        float moveDir = InputReceiver.Instance.GetBeastPlayerMoveDirection();
+        float moveDir = InputReceiver.Instance.GetHumanPlayerMoveDirection();
 
         rb.velocity = new Vector2(moveDir * moveSpeed,0);
 
+        
+    }
+
+
+    protected virtual void RotatePlayer()
+    {
+        if (rb.velocity.x > 0.1f)
+        {
+            transform.localScale = new (-playerScale, playerScale);
+        }
+        else if (rb.velocity.x < -0.1f)
+        {
+            transform.localScale = new (playerScale, playerScale);
+        }
     }
 
     protected bool GroundCheck()
@@ -40,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     protected void Animate()
     {
-        animator.SetFloat("Speed", rb.velocity.x);
+        animator.SetBool("isRunning", !(rb.velocity == Vector2.zero));
     }
 
     protected virtual void FixedUpdate()
@@ -53,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Move();
+        RotatePlayer();
         Animate();
     }
 }
