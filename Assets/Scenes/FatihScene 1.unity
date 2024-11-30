@@ -776,7 +776,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
-  jumpSpeed: 10
+  jumpSpeed: 20
   dodgeDistance: 5
   dodgeTime: 0.15
   isDodging: 0
