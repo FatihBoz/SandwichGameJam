@@ -16,8 +16,10 @@ public class DayNightCycle : MonoBehaviour
     
 
     public bool isStopped;
+    private bool isLightsOn;
     void Start()
     {
+        isLightsOn=true;
         isStopped=false;
         minutes=0;
         hours=0;
@@ -49,11 +51,25 @@ public class DayNightCycle : MonoBehaviour
         if (hours>=21 & hours<22)
         {
             ppv.weight =  (float)minutes / 60;
+            if (minutes>=45f && !isLightsOn)
+            {
+                // open lights
+                SetLights(true);
+                isLightsOn=true;
+            }
+
         }
+        
 
         if(hours>=6 && hours<7) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
         {
             ppv.weight = 1 - (float)minutes / 60; // we minus 1 because we want it to go from 1 - 0
+            if (minutes>=15f && isLightsOn)
+            {
+                // close lights
+                SetLights(false);
+                isLightsOn=false;
+            }
         }
 
     }
@@ -74,5 +90,11 @@ public class DayNightCycle : MonoBehaviour
     {
         return minutes;
     }
-
+    private void SetLights(bool status)
+    {
+        foreach (var item in lights)
+        {
+            item.SetActive(status);
+        }
+    }
 }

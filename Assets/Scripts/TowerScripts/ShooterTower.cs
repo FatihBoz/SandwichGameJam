@@ -2,34 +2,34 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
-public class ShooterTower : MonoBehaviour
+public class ShooterTower : Tower
 {
     public GameObject target; // Hedef objesi
     public TextManager textManager;
-    public GameObject firePoint; // Ateþ noktasý
+    public GameObject firePoint; // Ateï¿½ noktasï¿½
 
-    public GameObject projectilePrefab; // Fýrlatýlacak obje
+    public GameObject projectilePrefab; // Fï¿½rlatï¿½lacak obje
 
 
     [Header("Tower Options")]
-    public float projectileSpeed = 0.1f; // Obje fýrlatma hýzý
-    public float fireRate = 1f; // Ateþ etme sýklýðý
+    public float projectileSpeed = 0.1f; // Obje fï¿½rlatma hï¿½zï¿½
+    public float fireRate = 1f; // Ateï¿½ etme sï¿½klï¿½ï¿½ï¿½
     public float detectionRange = 5f; // Menzil
 
-    private float nextFireTime = 0f; // Ateþ etme zamaný
+    private float nextFireTime = 0f; // Ateï¿½ etme zamanï¿½
 
 
     private void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
 
-        // Eðer mesafe menzil içindeyse ateþ et
+        // Eï¿½er mesafe menzil iï¿½indeyse ateï¿½ et
         if (distanceToPlayer <= detectionRange)
         {
             if (Time.time >= nextFireTime)
             {
                 FireAtTarget();
-                nextFireTime = Time.time + fireRate; // Bir sonraki ateþ etme zamanýný belirle
+                nextFireTime = Time.time + fireRate; // Bir sonraki ateï¿½ etme zamanï¿½nï¿½ belirle
             }
         }
     }
@@ -38,17 +38,17 @@ public class ShooterTower : MonoBehaviour
     {
         if (target == null || firePoint == null || projectilePrefab == null) return;
 
-        // Ateþ noktasý pozisyonunda obje oluþtur
+        // Ateï¿½ noktasï¿½ pozisyonunda obje oluï¿½tur
         GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
 
-        // Hedefe doðru yönlendirme
+        // Hedefe doï¿½ru yï¿½nlendirme
         Vector2 direction = (target.transform.position - firePoint.transform.position).normalized;
 
-        // Oku hedefe döndürme
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Yönü hesapla
-        projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // Oku döndür
+        // Oku hedefe dï¿½ndï¿½rme
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg; // Yï¿½nï¿½ hesapla
+        projectile.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // Oku dï¿½ndï¿½r
 
-        // Okun hýzýný ayarlama
+        // Okun hï¿½zï¿½nï¿½ ayarlama
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         if (rb != null)
         {
@@ -59,9 +59,9 @@ public class ShooterTower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Kule menzilini görselleþtirme
-        Gizmos.color = Color.red; // Renk ayarý
-        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil çemberi
+        // Kule menzilini gï¿½rselleï¿½tirme
+        Gizmos.color = Color.red; // Renk ayarï¿½
+        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil ï¿½emberi
     }
 
 }
