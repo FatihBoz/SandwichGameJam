@@ -5,6 +5,7 @@ public class EnergyBond : MonoBehaviour
 {
     public Transform player; // Oyuncu transformu
     public Transform TowerFirePoint;
+    public TextManager textManager;
 
     [Header("Wave Options")]
     public int segmentCount = 20; // Çizgi segment sayýsý
@@ -96,7 +97,7 @@ public class EnergyBond : MonoBehaviour
         {
             movement.enabled = false;
         }
-
+        textManager.ShowStunnedText();
         Debug.Log("Player is frozen!");
     }
 
