@@ -1,4 +1,5 @@
 
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,10 +9,12 @@ public class TowerImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     private static readonly float scaleAmount = 1.2f;
     private Tower tower;
     private Image image;
+    private TMP_Text goldText;
 
     private void Awake()
     {
         image = GetComponent<Image>();
+        goldText = GetComponentInChildren<TMP_Text>();
     }
     public void SetImageIcon(Sprite sprite)
     {
@@ -20,6 +23,10 @@ public class TowerImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void SetTower(Tower tower)
     {
         this.tower=tower;
+    }
+    public void SetGoldText(string text)
+    {
+        goldText.text=text;
     }
     public Tower GetTower()
     {

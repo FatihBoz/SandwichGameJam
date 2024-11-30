@@ -44,7 +44,7 @@ public class PlacementUI : MonoBehaviour
                 TowerImage instantiedImage = Instantiate(towerIconPrefab,towerList);
                 instantiedImage.SetImageIcon(item.towerIcon);
                 instantiedImage.SetTower(item);
-
+                instantiedImage.SetGoldText(item.price.ToString());
                 selectableImages.Add(instantiedImage);
             } 
         }
@@ -54,9 +54,17 @@ public class PlacementUI : MonoBehaviour
    {
     if (Tower!=null)
     {
-        Tower tower=Instantiate(Tower);
-        tower.transform.position= new(placementLocation.transform.position.x,placementLocation.transform.position.y + offSetY);
-        placementLocation.gameObject.SetActive(false);   
+        PlayerPurchase playerPurchase = FindAnyObjectByType<PlayerPurchase>();
+        if (playerPurchase!=null)
+        {
+            if (playerPurchase.GetCurrentGold()>=Tower.price)
+            {
+                playerPurchase.DecreaseGold((int)Tower.price);
+                Tower tower=Instantiate(Tower);
+                tower.transform.position = new(placementLocation.transform.position.x,placementLocation.transform.position.y + offSetY);
+                placementLocation.gameObject.SetActive(false); 
+            }
+        }
     }
     }
 }
