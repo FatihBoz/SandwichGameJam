@@ -1,14 +1,11 @@
 using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 
 public class ShooterTower : Tower
 {
-    public GameObject target; // Hedef objesi
     public TextManager textManager;
-    public GameObject firePoint; // Ate� noktas�
+    public GameObject firePoint;
 
-    public GameObject projectilePrefab; // F�rlat�lacak obje
+    public GameObject projectilePrefab;
 
 
     [Header("Tower Options")]
@@ -18,9 +15,19 @@ public class ShooterTower : Tower
 
     private float nextFireTime = 0f; // Ate� etme zaman�
 
+    private GameObject target;
+    [SerializeField] private float detectRadius = 7.5f;
+    [SerializeField] private LayerMask beastLayer;
 
     private void Update()
     {
+        if (target == null)
+        {
+            Collider2D enemy = Physics2D.OverlapCircle(transform.position, detectRadius, beastLayer);
+            target = enemy.transform.gameObject;
+            return;
+        }
+
         float distanceToPlayer = Vector2.Distance(transform.position, target.transform.position);
 
         // E�er mesafe menzil i�indeyse ate� et
@@ -33,6 +40,8 @@ public class ShooterTower : Tower
             }
         }
     }
+
+
 
     private void FireAtTarget()
     {

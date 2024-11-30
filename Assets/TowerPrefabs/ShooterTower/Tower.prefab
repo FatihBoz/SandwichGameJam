@@ -101,13 +101,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 55
   towerIcon: {fileID: 21300000, guid: 2c918e936c388b448b62a14049c6feaf, type: 3}
-  target: {fileID: 0}
   textManager: {fileID: 0}
   firePoint: {fileID: 9149198509561001581}
   projectilePrefab: {fileID: 3684478397050195379, guid: 9cda5d8f0697d594da80fea0c504d785, type: 3}
   projectileSpeed: 50
   fireRate: 1
   detectionRange: 8.45
+  detectRadius: 7.5
+  beastLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!61 &972782548885820591
 BoxCollider2D:
   m_ObjectHideFlags: 0

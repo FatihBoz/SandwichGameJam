@@ -262,6 +262,10 @@ MonoBehaviour:
   detectionRange: 10
   freezeDelay: 3
   freezeDuration: 5
+  detectRadius: 7.5
+  beastLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1760459162533249059
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,9 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(LineRenderer))]
 public class EnergyBond : MonoBehaviour
 {
-    public Transform player; // Oyuncu transformu
     public Transform TowerFirePoint;
     public TextManager textManager;
 
@@ -23,6 +23,11 @@ public class EnergyBond : MonoBehaviour
     private bool isPlayerFrozen = false; // Oyuncunun dondurulup dondurulmadýðý
     private float freezeTimer = 0f; // Donma süresi sayacý
 
+
+    private GameObject target;
+    [SerializeField] private float detectRadius = 7.5f;
+    [SerializeField] private LayerMask beastLayer;
+
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
@@ -32,9 +37,14 @@ public class EnergyBond : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log("player stay time : " + playerStayTime);
+        if (target == null)
+        {
+            Collider2D enemy = Physics2D.OverlapCircle(transform.position, detectRadius, beastLayer);
+            target = enemy.transform.gameObject;
+            return;
+        }
 
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, target.transform.position);
 
         if (distanceToPlayer <= detectionRange && !isPlayerFrozen)
         {
@@ -68,7 +78,7 @@ public class EnergyBond : MonoBehaviour
     void DrawWavyLine()
     {
         Vector3 startPoint = TowerFirePoint.transform.position;
-        Vector3 endPoint = player.position;
+        Vector3 endPoint = target.transform.position;
         Vector3 direction = (endPoint - startPoint) / (segmentCount - 1);
 
         for (int i = 0; i < segmentCount; i++)
@@ -85,14 +95,14 @@ public class EnergyBond : MonoBehaviour
         isPlayerFrozen = true;
         freezeTimer = 0f; // Donma süresi sayaç sýfýrlanýr
 
-        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+        Rigidbody2D playerRb = target.GetComponent<Rigidbody2D>();
         if (playerRb != null)
         {
             playerRb.velocity = Vector2.zero;
             playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
 
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        PlayerMovement movement = target.GetComponent<PlayerMovement>();
         if (movement != null)
         {
             movement.enabled = false;
@@ -105,19 +115,17 @@ public class EnergyBond : MonoBehaviour
     {
         isPlayerFrozen = false;
 
-        Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
+        Rigidbody2D playerRb = target.GetComponent<Rigidbody2D>();
         if (playerRb != null)
         {
             playerRb.constraints = RigidbodyConstraints2D.FreezeRotation; // Tüm kýsýtlamalarý kaldýr
         }
 
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
+        PlayerMovement movement = target.GetComponent<PlayerMovement>();
         if (movement != null)
         {
             movement.enabled = true;
         }
-
-        Debug.Log("Player is unfrozen!");
     }
 
     private void OnDrawGizmos()

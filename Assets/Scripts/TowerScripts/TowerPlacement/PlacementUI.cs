@@ -9,39 +9,32 @@ public class PlacementUI : MonoBehaviour
     public Placement placementLocation;
     public TowerImage towerIconPrefab;
     public Transform towerIconParent;
-    public GameObject MAINPANEL;
     private List<TowerImage> selectableImages;
 
-    public TowerImage selectedTowerImage;
+    [SerializeField] private float offSetY = 3f;
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
     void Awake()
     {
         Instance=this;
-        selectedTowerImage=null;
         selectableImages=new List<TowerImage>();
     }
 
    public void SetPlacementLocation(Placement placementLocation)
    {
         this.placementLocation=placementLocation;
-        MAINPANEL.SetActive(true);
+        towerIconParent.gameObject.SetActive(true);
         LoadTowerIcons();
    }
    public void Reset()
    {
-        if (selectedTowerImage!=null)
-        {
-            selectedTowerImage.GetComponent<Image>().color=Color.white;
-        }
-        selectedTowerImage=null;
        for (int i = 0; i < selectableImages.Count; i++)
        {
              Destroy(selectableImages[i].gameObject);
        }
         selectableImages.Clear();
-        MAINPANEL.SetActive(false);
+        towerIconParent.gameObject.SetActive(false);
    }
    public void LoadTowerIcons()
    {
@@ -77,7 +70,7 @@ public class PlacementUI : MonoBehaviour
     if (Tower!=null)
     {
         Tower tower=Instantiate(Tower);
-        tower.transform.position=placementLocation.transform.position;
+        tower.transform.position= new(placementLocation.transform.position.x,placementLocation.transform.position.y + offSetY);
         placementLocation.gameObject.SetActive(false);   
     }
     }
