@@ -1,13 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
-public class BeastPlayerMovement : PlayerMovement
+public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
 {
     [SerializeField] private float dodgeDistance = 10f;
     [SerializeField] private float dodgeTime = .3f;
-    [SerializeField]
+    [SerializeField] private float timeBetweenDodges = 1f;
     private bool isDodging;
     private float dodgeStartTime;
     private Vector3 dodgeDirection;
+
 
 
     protected override void FixedUpdate()
@@ -71,10 +73,18 @@ public class BeastPlayerMovement : PlayerMovement
 
     private void EndDodge()
     {
-        isDodging = false;
+
+        StartCoroutine(EndDodgeNumerator());
 
         //finish animation
     }
+
+    private IEnumerator EndDodgeNumerator()
+    {
+        yield return new WaitForSeconds(timeBetweenDodges);
+        isDodging = false;
+    }
+
 
     private Vector3 GetDodgeDirection()
     {
@@ -82,4 +92,6 @@ public class BeastPlayerMovement : PlayerMovement
         //if character does not move dash towards its own direction.Else dash according to movement.
         return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : transform.forward;
     }
+
+    public bool IsInvulnerable => isDodging;
 }

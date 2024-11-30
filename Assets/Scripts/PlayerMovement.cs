@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float jumpSpeed;
     [SerializeField] private Transform raycastShootPoint;
@@ -58,7 +57,7 @@ public class PlayerMovement : MonoBehaviour
 
     protected void Animate()
     {
-        animator.SetBool("isRunning", !(rb.velocity == Vector2.zero));
+        animator.SetBool("isRunning", !(rb.velocity.x == 0));
     }
 
     protected virtual void FixedUpdate()

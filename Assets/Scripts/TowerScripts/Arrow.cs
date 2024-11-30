@@ -12,11 +12,9 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Eðer çarpýþan obje player ise
-        if (other.CompareTag("Player"))
+        if (other.TryGetComponent<IPlayerCombat>(out var player))
         {
-            Health.HealthInstance.GetDamage(15);
-            Destroy(gameObject);
+            player.GetDamage(15);
         }
     }
 }

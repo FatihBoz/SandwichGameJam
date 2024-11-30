@@ -1,15 +1,30 @@
 using UnityEngine;
 
-public class BeastPlayerAttack : MonoBehaviour
+public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 {
-    [SerializeField] private float attackCooldown = 2f;
+    [SerializeField] TextManager textmanager;
+    [SerializeField] private float maxHp;
+    private float currentHp;
+    bool isInvulnerable;
+    IPlayerMovement playerMovement;
+    
 
+    [Header("***ATTACK***")]
+    [SerializeField] private float attackCooldown = 2f;
     [SerializeField] float attackRadius = 1f;
     [SerializeField] int attackDamage = 10;
     [SerializeField] LayerMask towerLayer;
     [SerializeField] float attackAngle = 90f;
-
     float elapsedTimeAfterAttack;
+
+
+    private void Awake()
+    {
+        currentHp = maxHp;
+
+        playerMovement = GetComponent<IPlayerMovement>();
+    }
+
 
     private void Update()
     {
@@ -21,6 +36,7 @@ public class BeastPlayerAttack : MonoBehaviour
             elapsedTimeAfterAttack = 0;
         }
     }
+
     void Attack()
     {
         Vector2 attackDirection = (Vector2)transform.up;
@@ -34,6 +50,27 @@ public class BeastPlayerAttack : MonoBehaviour
             {
                 //Access its script and damage it
             }
+        }
+
+    }
+
+    public void GetDamage(float damageAmount)
+    {
+        if (playerMovement.IsInvulnerable)
+        {
+            return;
+        }
+
+        //HASAR AZALTMA EFEKTÝ YOKSA
+
+        currentHp -= damageAmount;
+
+        textmanager.ShowDamageText(damageAmount);
+
+        if (currentHp <= 0)
+        {
+            //GEBER
+            print("geberdin");
         }
 
     }

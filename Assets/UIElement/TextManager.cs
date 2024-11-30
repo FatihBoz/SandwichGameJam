@@ -46,7 +46,7 @@ public class TextManager : MonoBehaviour
 
     }
 
-    public void ShowDamageText(int damage)
+    public void ShowDamageText(float damage)
     {
         string message = $"-{damage} Taken";
         Color damageColor = Color.red; // Kýrmýzý renk
