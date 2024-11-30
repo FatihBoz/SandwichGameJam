@@ -40,7 +40,10 @@ public class EnergyBond : MonoBehaviour
         if (target == null)
         {
             Collider2D enemy = Physics2D.OverlapCircle(transform.position, detectRadius, beastLayer);
-            target = enemy.transform.gameObject;
+            if (enemy != null)
+            {
+                target = enemy.transform.gameObject;
+            }
             return;
         }
 

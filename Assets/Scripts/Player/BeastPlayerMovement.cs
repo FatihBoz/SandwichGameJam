@@ -90,7 +90,7 @@ public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
     {
         Vector2 moveDirection = new Vector2(InputReceiver.Instance.GetBeastPlayerMoveDirection(),0);
         //if character does not move dash towards its own direction.Else dash according to movement.
-        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : transform.forward;
+        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : transform.right;
     }
 
     public bool IsInvulnerable => isDodging;
