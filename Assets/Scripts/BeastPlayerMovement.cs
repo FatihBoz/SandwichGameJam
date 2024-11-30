@@ -38,7 +38,7 @@ public class BeastPlayerMovement : PlayerMovement
     {
         float dir = InputReceiver.Instance.GetBeastPlayerMoveDirection();
 
-        rb.velocity = new Vector2(dir * moveSpeed, 0);
+        rb.velocity = new Vector2(dir * moveSpeed, rb.velocity.y);
     }
 
     private void PerformDodge()
