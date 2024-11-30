@@ -16,15 +16,14 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveDir = InputReceiver.Instance.GetBeastPlayerMoveDirection();
 
-        rb.velocity = new Vector2(moveDir * moveSpeed, 0);
+        rb.velocity = new Vector2(moveDir * moveSpeed, rb.velocity.y);
 
     }
 
 
     protected void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(Vector2.up * jumpSpeed);
+        rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
     }
 
     protected virtual void FixedUpdate()
