@@ -3,48 +3,56 @@ using UnityEngine.UI;
 
 public class TowerHealthBar : MonoBehaviour
 {
-    public GameObject towerObject;  // Kule saðlýðý referansý
-    public Image healthBar;          // Yeþil saðlýk barý
-    public Image redBackground;      // Kýrmýzý arka plan
+    public GameObject towerObject;  // Kule saï¿½lï¿½ï¿½ï¿½ referansï¿½
+    public Slider healthBar;          // Yeï¿½il saï¿½lï¿½k barï¿½
+    Tower tower;
 
-    TowerHealth towerHealth;
-
+    private GameObject canvasGO;
+    public Vector3 offset;
     private void Awake()
     {
-        towerHealth = towerObject.GetComponent<TowerHealth>();
+        tower = towerObject.GetComponent<Tower>();
     }
 
     void Start()
     {
-        // Kule saðlýðýný almak
-        if (towerHealth == null)
+        
+        canvasGO = GameObject.Find("WorldSpaceCanvas");
+        // Kule saï¿½lï¿½ï¿½ï¿½nï¿½ almak
+        if (tower == null)
         {
-            towerHealth = GetComponentInParent<TowerHealth>();  // Kule saðlýðýna referans ver
+            tower = GetComponentInParent<Tower>();  // Kule saï¿½lï¿½ï¿½ï¿½na referans ver
         }
 
-        // Can barlarýný baþlangýç durumlarýna göre ayarla
+        // Can barlarï¿½nï¿½ baï¿½langï¿½ï¿½ durumlarï¿½na gï¿½re ayarla
         UpdateHealthBar();
+
+
+        if (canvasGO!=null)
+        {
+            transform.SetParent(canvasGO.transform);
+           
+        }
     }
 
     void Update()
     {
-        // Kule saðlýðý deðiþtikçe can barýný güncelle
+         transform.position=tower.transform.position+offset;
+        // Kule saï¿½lï¿½ï¿½ï¿½ deï¿½iï¿½tikï¿½e can barï¿½nï¿½ gï¿½ncelle
         UpdateHealthBar();
 
     }
 
     private void UpdateHealthBar()
     {
-        if (towerHealth != null)
+        if (tower != null)
         {
-            // Kule saðlýðýnýn yüzde deðeri
-            float healthPercentage = towerHealth.GetCurrentHealth() / towerHealth.maxHealth;
+            // Kule saï¿½lï¿½ï¿½ï¿½nï¿½n yï¿½zde deï¿½eri
+            float healthPercentage = tower.GetCurrentHealth() / tower.maxHealth;
 
-            // Yeþil saðlýk barýný güncelle
-            healthBar.fillAmount = healthPercentage;
+            // Yeï¿½il saï¿½lï¿½k barï¿½nï¿½ gï¿½ncelle
+            healthBar.value = healthPercentage;
 
-            // Kýrmýzý arka planý güncelle
-            redBackground.fillAmount = 1 - healthPercentage;
         }
     }
 }
