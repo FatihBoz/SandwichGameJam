@@ -14,7 +14,7 @@ public class Arrow : MonoBehaviour
     {
         if (other.TryGetComponent<IPlayerCombat>(out var player))
         {
-            player.GetDamage(15);
+            player.TakeDamage(15);
         }
     }
 }

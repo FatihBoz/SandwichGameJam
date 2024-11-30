@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 5293676873164642943}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.997, z: 0}
+  m_LocalPosition: {x: 0.08, y: -4.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -46,9 +46,10 @@ GameObject:
   - component: {fileID: 7988562613098791212}
   - component: {fileID: 5000102838457651096}
   - component: {fileID: 3526712111408477161}
+  - component: {fileID: 1904970369591779730}
   m_Layer: 0
   m_Name: Beast
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +112,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 71af3c9a7bd2673439ece8438f7b2152, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -154,8 +155,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Offset: {x: 0.44782352, y: 0.45378637}
+  m_Size: {x: 8.533972, y: 8.731767}
   m_Direction: 0
 --- !u!50 &7171596960559085750
 Rigidbody2D:
@@ -208,16 +209,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22952a456ee3aef49bb65c20b9c90124, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 30
   jumpSpeed: 30
   raycastShootPoint: {fileID: 4789950194755011601}
   groundLayer:
     serializedVersion: 2
     m_Bits: 128
-  rayLength: 0.1
-  dodgeDistance: 5
+  rayLength: 0.25
+  dodgeDistance: 8
   dodgeTime: 0.15
-  isDodging: 0
+  timeBetweenDodges: 0.5
 --- !u!114 &3526712111408477161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +231,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e53d71fb8978ae944a795d7e09280a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textmanager: {fileID: 0}
+  beastHealthBar: {fileID: 0}
+  maxHp: 100
   attackCooldown: 2
   attackRadius: 9.26
   attackDamage: 10
@@ -237,6 +241,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackAngle: 90
+--- !u!95 &1904970369591779730
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5600831922757790605}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 28ba3f1f544b6e642a6305699d4263bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7510046526682692979
 GameObject:
   m_ObjectHideFlags: 0

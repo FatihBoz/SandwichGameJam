@@ -108,7 +108,7 @@ public class EnergyBond : MonoBehaviour
         Rigidbody2D playerRb = player.GetComponent<Rigidbody2D>();
         if (playerRb != null)
         {
-            playerRb.constraints = RigidbodyConstraints2D.None; // Tüm kýsýtlamalarý kaldýr
+            playerRb.constraints = RigidbodyConstraints2D.FreezeRotation; // Tüm kýsýtlamalarý kaldýr
         }
 
         PlayerMovement movement = player.GetComponent<PlayerMovement>();

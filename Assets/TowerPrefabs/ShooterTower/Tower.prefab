@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1722515646872414613}
   - component: {fileID: 9067180618493872131}
   - component: {fileID: 972782548885820591}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.2924, y: -0.1773, z: 0}
-  m_LocalScale: {x: 1.9996339, y: 4.4516616, z: 1}
+  m_LocalScale: {x: 1.5399181, y: 3.3881595, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3293076604328699501}
@@ -99,12 +99,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330f95afb13903e4e8b78395755aff6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  textManager: {fileID: 0}
   firePoint: {fileID: 9149198509561001581}
   projectilePrefab: {fileID: 3684478397050195379, guid: 9cda5d8f0697d594da80fea0c504d785, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 50
   fireRate: 1
   detectionRange: 8.45
-  target: {fileID: 0}
 --- !u!61 &972782548885820591
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3293076604328699501}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}

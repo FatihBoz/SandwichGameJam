@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 {
-    [SerializeField] TextManager textmanager;
+    [SerializeField] private TextManager textmanager;
+    [SerializeField] private Image beastHealthBar;
     [SerializeField] private float maxHp;
     private float currentHp;
-    bool isInvulnerable;
-    IPlayerMovement playerMovement;
+    private bool isInvulnerable;
+    private IPlayerMovement playerMovement;
     
 
     [Header("***ATTACK***")]
@@ -39,22 +41,28 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     void Attack()
     {
+        print("attack inputu alýndý");
         Vector2 attackDirection = (Vector2)transform.up;
 
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, attackRadius, towerLayer);
+
         foreach (Collider2D enemy in enemiesHit)
         {
             Vector2 toEnemy = (enemy.transform.position - transform.position).normalized;
             float angle = Vector2.Angle(attackDirection, toEnemy);
             if (angle < attackAngle)
             {
-                //Access its script and damage it
+                if (enemy.TryGetComponent<TowerHealth>(out var tower))
+                {
+                    print("tower health'e ulaþtý.");
+                    tower.TakeDamage(15);
+                }
             }
         }
 
     }
 
-    public void GetDamage(float damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         if (playerMovement.IsInvulnerable)
         {
@@ -64,6 +72,8 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         //HASAR AZALTMA EFEKTÝ YOKSA
 
         currentHp -= damageAmount;
+
+        beastHealthBar.fillAmount = currentHp / maxHp;
 
         textmanager.ShowDamageText(damageAmount);
 

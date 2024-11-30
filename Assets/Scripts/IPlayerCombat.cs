@@ -1,5 +1,5 @@
 
 public interface IPlayerCombat
 {
-    public void GetDamage(float damageAmount);
+    public void TakeDamage(float damageAmount);
 }

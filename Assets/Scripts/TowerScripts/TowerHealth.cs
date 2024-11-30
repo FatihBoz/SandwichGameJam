@@ -15,6 +15,7 @@ public class TowerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;  // Hasar verilir
+        print("kule caný:" + currentHealth);
         if (currentHealth <= 0)
         {
             DestroyTower();  // Can sýfýrlanýrsa kule yok edilir
