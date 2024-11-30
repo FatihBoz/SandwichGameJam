@@ -474,8 +474,8 @@ Camera:
   m_GameObject: {fileID: 467333754}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1012,8 +1012,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tick: 40
+  nightStart: 11
+  nightEnd: 13
+  lightOpenMinute: 45
+  dayStart: 4
+  dayEnd: 7
+  lightCloseMinute: 15
   lights:
   - {fileID: 2114834585}
+  hours: 2
   isStopped: 0
 --- !u!1 &1299160524
 GameObject:

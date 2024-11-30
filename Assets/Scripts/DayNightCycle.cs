@@ -6,10 +6,17 @@ using UnityEngine.Rendering;
 public class DayNightCycle : MonoBehaviour
 {
     public float tick;
+
+    public int nightStart;
+    public int nightEnd;
+    public float lightOpenMinute=45f;
+    public int dayStart;
+    public int dayEnd;
+    public float lightCloseMinute=15f;
     public GameObject[] lights;
 
     private float minutes;
-    private int hours;
+    public int hours;
     private int days;
 
     private Volume ppv;
@@ -22,7 +29,6 @@ public class DayNightCycle : MonoBehaviour
         isLightsOn=true;
         isStopped=false;
         minutes=0;
-        hours=0;
         days=0;
         ppv=GetComponent<Volume>();
     }
@@ -48,10 +54,12 @@ public class DayNightCycle : MonoBehaviour
     }
     private void SetVolume()
     {
-        if (hours>=21 & hours<22)
+        if (hours>=nightStart & hours<nightEnd)
         {
-            ppv.weight =  (float)minutes / 60;
-            if (minutes>=45f && !isLightsOn)
+            float var = ((nightEnd-nightStart)*60);
+            float lagas = ((float)(hours-nightStart)*60+(float)minutes);
+            ppv.weight =  lagas / var;
+            if (minutes>=lightCloseMinute && !isLightsOn)
             {
                 // open lights
                 SetLights(true);
@@ -61,10 +69,12 @@ public class DayNightCycle : MonoBehaviour
         }
         
 
-        if(hours>=6 && hours<7) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
+        if(hours>=dayStart && hours<dayEnd) // Dawn at 6:00 / 6am    -   until 7:00 / 7am
         {
-            ppv.weight = 1 - (float)minutes / 60; // we minus 1 because we want it to go from 1 - 0
-            if (minutes>=15f && isLightsOn)
+            float var = ((dayEnd-dayStart)*60);
+            float lagas = ((float)(hours-dayStart)*60+(float)minutes);
+            ppv.weight = 1 - ( lagas / var); // we minus 1 because we want it to go from 1 - 0
+            if (minutes>=lightOpenMinute && isLightsOn)
             {
                 // close lights
                 SetLights(false);
