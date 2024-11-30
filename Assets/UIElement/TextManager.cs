@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class TextManager : MonoBehaviour
@@ -6,35 +7,43 @@ public class TextManager : MonoBehaviour
     public GameObject floatingTextPrefab; // Floating Text için prefab
     public Transform textSpawnPoint; // Yazýnýn çýkacaðý nokta
     public float textLifetime = 2f; // Yazýnýn ne kadar süre ekranda kalacaðý
-    public Vector3 offset = new Vector3(0, 2, 0); // Yazýnýn karaktere göre konumu
-    public Vector3 randomOffsetRange = new Vector3(0.5f, 0.5f, 0); // Yazýnýn rastgele hareketi
+    public float floatSpeed = 1f; // Yukarý doðru hareket hýzý
+
 
     public void ShowFloatingText(string message, Color textColor)
     {
         if (floatingTextPrefab == null) return;
 
         // Prefab'ý oluþtur
-        GameObject floatingText = Instantiate(floatingTextPrefab, textSpawnPoint.position + offset, Quaternion.identity, transform);
+        GameObject floatingText = Instantiate(floatingTextPrefab, textSpawnPoint.position, Quaternion.identity, transform);
 
         // Yazý ayarlarý
-        TextMesh textMesh = floatingText.GetComponent<TextMesh>();
+        TextMeshPro textMesh = floatingText.GetComponent<TextMeshPro>();
         if (textMesh != null)
         {
+            Debug.Log("Text mesh null deðil yazý deðiþme");
             textMesh.text = message;
             textMesh.color = textColor;
         }
 
-        // Rastgele hareket için pozisyon ayarý
-        Vector3 randomOffset = new Vector3(
-            Random.Range(-randomOffsetRange.x, randomOffsetRange.x),
-            Random.Range(-randomOffsetRange.y, randomOffsetRange.y),
-            Random.Range(-randomOffsetRange.z, randomOffsetRange.z)
-        );
+        StartCoroutine(FloatTextUpwards(floatingText));
+    }
 
-        floatingText.transform.localPosition += randomOffset;
+    private IEnumerator FloatTextUpwards(GameObject floatingText)
+    {
+        float elapsedTime = 0;
 
-        // Yazýyý yok etme
-        Destroy(floatingText, textLifetime);
+        while (elapsedTime < textLifetime)
+        {
+            floatingText.transform.position += Vector3.up * floatSpeed * Time.deltaTime;
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // Bir sonraki frame'e geç
+
+        }
+
+        Destroy(floatingText);
+
     }
 
     public void ShowDamageText(int damage)

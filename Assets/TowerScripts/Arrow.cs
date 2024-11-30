@@ -13,9 +13,9 @@ public class Arrow : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Eðer çarpýþan obje player ise
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
-            // Player'a çarpýnca oku yok et
+            Health.HealthInstance.GetDamage(15);
             Destroy(gameObject);
         }
     }

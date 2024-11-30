@@ -45,14 +45,6 @@ public class HellTower : MonoBehaviour
         {
             rb.isKinematic = true;
         }
-        /*
-        // Alternatif olarak baþka bir hareket scriptini devre dýþý býrakabilirsiniz
-        PlayerMovement movement = player.GetComponent<PlayerMovement>();
-        if (movement != null)
-        {
-            movement.enabled = false;
-        }
-        */
     }
 
     private void OnDrawGizmos()

@@ -32,7 +32,7 @@ public class EnergyBond : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("player stay time : " + playerStayTime);
+        //Debug.Log("player stay time : " + playerStayTime);
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -118,5 +118,12 @@ public class EnergyBond : MonoBehaviour
         }
 
         Debug.Log("Player is unfrozen!");
+    }
+
+    private void OnDrawGizmos()
+    {
+        // Kule menzilini görselleþtirme
+        Gizmos.color = Color.blue; // Renk ayarý
+        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil çemberi
     }
 }
