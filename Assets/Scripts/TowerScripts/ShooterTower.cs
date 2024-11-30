@@ -3,7 +3,9 @@ using UnityEngine;
 public class ShooterTower : Tower
 {
     public TextManager textManager;
-    public GameObject firePoint;
+
+    public Transform firePointRight;
+    public Transform firePointLeft;
 
     public GameObject projectilePrefab;
 
@@ -18,6 +20,8 @@ public class ShooterTower : Tower
     private GameObject target;
     [SerializeField] private float detectRadius = 7.5f;
     [SerializeField] private LayerMask beastLayer;
+
+    private Transform firePoint;
 
     private void Update()
     {
@@ -45,10 +49,22 @@ public class ShooterTower : Tower
 
     private void FireAtTarget()
     {
-        if (target == null || firePoint == null || projectilePrefab == null) return;
+        if (target == null || projectilePrefab == null) return;
 
-        // Ate� noktas� pozisyonunda obje olu�tur
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
+        GameObject projectile;
+
+        //Right skull is closer
+        if (Vector2.Distance(target.transform.position, firePointRight.position) < Vector2.Distance(target.transform.position, firePointLeft.position))
+        {
+            firePoint = firePointRight;
+            
+        }
+        else // if the distance is equal or left skull is closer
+        {
+            firePoint = firePointLeft;
+        }
+
+        projectile = Instantiate(projectilePrefab, firePoint.transform.position, Quaternion.identity);
 
         // Hedefe do�ru y�nlendirme
         Vector2 direction = (target.transform.position - firePoint.transform.position).normalized;

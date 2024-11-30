@@ -46,24 +46,10 @@ public class PlacementUI : MonoBehaviour
                 instantiedImage.SetImageIcon(item.towerIcon);
                 instantiedImage.SetTower(item);
 
-                //Button button = instantiedImage.gameObject.AddComponent<Button>();
-                //button.onClick.AddListener(()=>SelectTowerImage(instantiedImage));
-
                 selectableImages.Add(instantiedImage);
             } 
         }
    }
-
-   //public void SelectTowerImage(TowerImage towerImage)
-   //{
-        
-   //     if (selectedTowerImage!=null)
-   //     {
-   //         selectedTowerImage.GetComponent<Image>().color=Color.white;
-   //     }
-   //     selectedTowerImage=towerImage;
-   //     selectedTowerImage.GetComponent<Image>().color=Color.green;
-   //}
 
    public void Build(Tower Tower)
    {

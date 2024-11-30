@@ -46,12 +46,6 @@ public class InputReceiver : MonoBehaviour
 
 
     #region PLAYER METHODS
-
-    public float GetHumanPlayerBuildInput()
-    {
-        return humanPlayer.Human.Build.ReadValue<float>();
-    }
-
     public float GetHumanPlayerMoveDirection()
     {
         return humanPlayer.Human.Movement.ReadValue<float>();
