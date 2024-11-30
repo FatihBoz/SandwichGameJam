@@ -71,7 +71,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             float angle = Vector2.Angle(attackDirection, toEnemy);
             if (angle < attackAngle)
             {
-                if (enemy.TryGetComponent<TowerHealth>(out var tower))
+                if (enemy.TryGetComponent<Tower>(out var tower))
                 {
                     print("tower health'e ula�t�.");
                     tower.TakeDamage(15);

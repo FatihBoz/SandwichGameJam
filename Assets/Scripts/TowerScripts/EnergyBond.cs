@@ -5,18 +5,17 @@ using static UnityEngine.GraphicsBuffer;
 public class EnergyBond : MonoBehaviour
 {
     public Transform TowerFirePoint;
-    public TextManager textManager;
 
-    [Header("Wave Options")]
-    public int segmentCount = 20; // Çizgi segment sayýsý
-    public float waveAmplitude = 0.5f; // Dalganýn yüksekliði
-    public float waveFrequency = 2f; // Dalganýn sýklýðý
-    public float waveSpeed = 2f; // Dalganýn hareket hýzý
+    //[Header("Wave Options")]
+    private int segmentCount = 20; // Çizgi segment sayýsý
+    private float waveAmplitude = 0.5f; // Dalganýn yüksekliði
+    private float waveFrequency = 2f; // Dalganýn sýklýðý
+    private float waveSpeed = 2f; // Dalganýn hareket hýzý
 
-    [Header("Freeze Options")]
-    public float detectionRange = 10f; // Baðýn oluþacaðý maksimum mesafe
-    public float freezeDelay = 3f; // Dondurucu etkinin tetikleneceði süre
-    public float freezeDuration = 5f; // Oyuncunun donmuþ kalacaðý süre
+    //[Header("Freeze Options")]
+    private float detectionRange = 15f; // Baðýn oluþacaðý maksimum mesafe
+    private float freezeDelay = 3f; // Dondurucu etkinin tetikleneceði süre
+    private float freezeDuration = 3f; // Oyuncunun donmuþ kalacaðý süre
 
     private LineRenderer lineRenderer;
     private float playerStayTime = 0f; // Oyuncunun menzilde geçirdiði süre
@@ -110,7 +109,7 @@ public class EnergyBond : MonoBehaviour
         {
             movement.enabled = false;
         }
-        textManager.ShowStunnedText();
+        //textManager.ShowStunnedText();
         Debug.Log("Player is frozen!");
     }
 
