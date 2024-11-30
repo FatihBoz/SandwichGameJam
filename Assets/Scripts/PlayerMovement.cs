@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float jumpSpeed;
     [SerializeField] private Transform raycastShootPoint;
@@ -11,10 +12,12 @@ public class PlayerMovement : MonoBehaviour
     protected bool isGrounded;
 
     protected Rigidbody2D rb;
+    protected Animator animator;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
     protected virtual void Move()
     {
@@ -35,6 +38,11 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(0, jumpSpeed);
     }
 
+    protected void Animate()
+    {
+        animator.SetFloat("Speed", rb.velocity.x);
+    }
+
     protected virtual void FixedUpdate()
     {
         isGrounded = GroundCheck();
@@ -45,5 +53,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Move();
+        Animate();
     }
 }

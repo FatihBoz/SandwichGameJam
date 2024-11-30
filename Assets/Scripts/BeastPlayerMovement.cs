@@ -32,6 +32,7 @@ public class BeastPlayerMovement : PlayerMovement
         }
 
         Move();
+        Animate();
     }
 
     protected override void Move()

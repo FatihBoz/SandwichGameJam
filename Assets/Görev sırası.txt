@@ -1,6 +1,0 @@
--iyi karakter mekanikleri - Movement,Build
--K�t� karakter mekanikleri - Attack
-(Movement scriptleri ayn� veya kal�t�lm��)
-
--Arrow tower(d�md�z bir �ekilde menzilindeki d��mana ok atar)
-
