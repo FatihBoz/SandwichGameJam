@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -30,15 +28,18 @@ public class TowerImage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.rectTransform.localScale = Vector3.one * scaleAmount;
+        print("On Pointer Enter");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         image.rectTransform.localScale = Vector3.one;
+        print("On Pointer Exit");
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
         PlacementUI.Instance.Build(GetTower());
+        print("On Pointer Click");
     }
 }

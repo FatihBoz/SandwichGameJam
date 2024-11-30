@@ -22,7 +22,7 @@ public class DayNightCycle : MonoBehaviour
         isLightsOn=true;
         isStopped=false;
         minutes=0;
-        hours=0;
+        hours=9;
         days=0;
         ppv=GetComponent<Volume>();
     }
@@ -48,9 +48,9 @@ public class DayNightCycle : MonoBehaviour
     }
     private void SetVolume()
     {
-        if (hours>=21 & hours<22)
+        if (hours>=18 & hours<22)
         {
-            ppv.weight =  (float)minutes / 60;
+            ppv.weight =  (hours-17)*(float)minutes / 5*60;
             if (minutes>=45f && !isLightsOn)
             {
                 // open lights
