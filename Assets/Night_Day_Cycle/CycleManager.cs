@@ -1,8 +1,13 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CycleManager : MonoBehaviour
 {
-    public bool isMorning = true; // Sabah mý? Akþam mý?
+    int dayCount = 1;
+    int increaseDayCount = 0;
+
+    private bool isMorning = true; // Sabah mý? Akþam mý?
     public RectTransform center; // Dönüþ merkezini UI elemaný olarak ayarla
     public RectTransform movingPoint; // Dönen ibre
 
@@ -14,6 +19,7 @@ public class CycleManager : MonoBehaviour
     private ClockSpriteChanger[] spriteSwitchers;
     private SpriteChanger[] generalSpriteSwitchers;
 
+    public TextMeshProUGUI dayText;
 
     void Start()
     {
@@ -23,15 +29,23 @@ public class CycleManager : MonoBehaviour
         // Tüm SpriteChanger bileþenlerini bul
         spriteSwitchers = FindObjectsOfType<ClockSpriteChanger>();
 
-
-
-
         UpdateSprites();
     }
 
     public void ToggleDayNight()
     {
+        if(increaseDayCount == 1)
+        {
+            dayCount++;
+            increaseDayCount = 0;
+        }
+        else
+        {
+            increaseDayCount++;
+
+        }
         isMorning = !isMorning;
+        dayText.text = $"{(isMorning ? "Morning" : "Night")} Day : {dayCount}";
         UpdateSprites();
     }
 
@@ -39,7 +53,7 @@ public class CycleManager : MonoBehaviour
     {
         generalSpriteSwitchers = FindObjectsOfType<SpriteChanger>();
 
-
+        //Clocks changed
         foreach (ClockSpriteChanger switcher in spriteSwitchers)
         {
             if (isMorning)
@@ -51,9 +65,10 @@ public class CycleManager : MonoBehaviour
                 switcher.SwitchToEvening();
             }
         }
+
+        //Buildings Changed
         foreach (SpriteChanger switcher in generalSpriteSwitchers)
         {
-            Debug.Log("Aloooo" + switcher.gameObject.name);
             if (isMorning)
             {
                 switcher.SwitchToMorning();
@@ -74,7 +89,6 @@ public class CycleManager : MonoBehaviour
         // Tam dönüþ kontrolü (0 ile 360 arasýnda normalize et)
         if (currentRotation >= 360f)
         {
-            Debug.Log("Föngüüüüü");
             currentRotation -= 360f;
             ToggleDayNight(); // Dönüþ tamamlanýnca gece-gündüz geçiþi
         }
