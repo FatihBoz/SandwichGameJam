@@ -19,29 +19,48 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     [SerializeField] float attackAngle = 90f;
     float elapsedTimeAfterAttack;
 
+    private bool isAttacking;
+    private bool isDoubleAttacking;
+
+
+    public float doubleAttackTime=0.1f;
+
+
+    private Animator animator;
+
 
     private void Awake()
     {
+        animator=GetComponent<Animator>();
         currentHp = maxHp;
-
         playerMovement = GetComponent<IPlayerMovement>();
     }
 
 
     private void Update()
     {
+
         elapsedTimeAfterAttack += Time.deltaTime;
 
-        if (InputReceiver.Instance.GetBeastPlayerAttackInput() == 1 && elapsedTimeAfterAttack >= attackCooldown)
+        if(Input.GetMouseButtonDown(0) && doubleAttackTime>=elapsedTimeAfterAttack && isAttacking)
         {
-            Attack();
+            isDoubleAttacking=true;
+        }
+
+        if (Input.GetMouseButtonDown(0) && elapsedTimeAfterAttack >= attackCooldown && !isDoubleAttacking)
+        {
+            isAttacking=true;
+           // Attack();
             elapsedTimeAfterAttack = 0;
         }
+
+        animator.SetBool("isAttacking",isAttacking);
+        animator.SetBool("isDoubleAttack",isDoubleAttacking);
     }
 
     void Attack()
     {
-        print("attack inputu alýndý");
+        print("attack inputu alï¿½ndï¿½");
         Vector2 attackDirection = (Vector2)transform.up;
 
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, attackRadius, towerLayer);
@@ -54,12 +73,22 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             {
                 if (enemy.TryGetComponent<TowerHealth>(out var tower))
                 {
-                    print("tower health'e ulaþtý.");
+                    print("tower health'e ulaï¿½tï¿½.");
                     tower.TakeDamage(15);
                 }
             }
         }
 
+        if (!isAttacking && isDoubleAttacking)
+        {
+            isDoubleAttacking=false;
+        }
+
+        if (isAttacking)
+        {
+            isAttacking=false;
+        }
+        
     }
 
     public void TakeDamage(float damageAmount)
@@ -69,7 +98,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             return;
         }
 
-        //HASAR AZALTMA EFEKTÝ YOKSA
+        //HASAR AZALTMA EFEKTï¿½ YOKSA
 
         currentHp -= damageAmount;
 
