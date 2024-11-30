@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1321544864662388646}
   - component: {fileID: 1760459162533249059}
   - component: {fileID: 534805111084960025}
+  - component: {fileID: 1532051219359015583}
   m_Layer: 6
   m_Name: FreezeTower
   m_TagString: Untagged
@@ -262,6 +263,10 @@ MonoBehaviour:
   detectionRange: 10
   freezeDelay: 3
   freezeDuration: 5
+  detectRadius: 7.5
+  beastLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &1760459162533249059
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -289,6 +294,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 65
   towerIcon: {fileID: 21300000, guid: 3ad12ad6995cde7479692d921035a6de, type: 3}
+--- !u!114 &1532051219359015583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515611162792777458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80508116aafaa7409777f6363c17116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  morningSprite: {fileID: 21300000, guid: 3ad12ad6995cde7479692d921035a6de, type: 3}
+  eveningSprite: {fileID: 21300000, guid: bc14dcd217e72994ba82e38387fa76f1, type: 3}
 --- !u!1 &3985435117566698287
 GameObject:
   m_ObjectHideFlags: 0

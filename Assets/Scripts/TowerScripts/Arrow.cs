@@ -6,9 +6,9 @@ public class Arrow : MonoBehaviour
 
     private void Start()
     {
-        // Ok oluþturulduðunda belirli bir süre sonra kendisini yok et
-        Destroy(gameObject, lifetime); // lifetime süresi sonunda oku yok et
+        Destroy(gameObject, lifetime);
     }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,4 +17,6 @@ public class Arrow : MonoBehaviour
             player.TakeDamage(15);
         }
     }
+
+
 }
