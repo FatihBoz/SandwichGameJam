@@ -105,6 +105,7 @@ MonoBehaviour:
   price: 55
   towerIcon: {fileID: 21300000, guid: 2c918e936c388b448b62a14049c6feaf, type: 3}
   maxHealth: 100
+  myHealthBar: {fileID: 3719313441915807813}
   textManager: {fileID: 0}
   firePointRight: {fileID: 3293076604328699501}
   firePointLeft: {fileID: 7441876430298807607}
@@ -346,6 +347,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
+--- !u!1 &3719313441915807813 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1821339932998809462, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
+  m_PrefabInstance: {fileID: 3088084897237737267}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8033929701701766687 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5018510430851453228, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}

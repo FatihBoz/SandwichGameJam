@@ -49,7 +49,7 @@ public class TowerHealthBar : MonoBehaviour
         {
             // Kule sa�l���n�n y�zde de�eri
             float healthPercentage = tower.GetCurrentHealth() / tower.maxHealth;
-
+            
             // Ye�il sa�l�k bar�n� g�ncelle
             healthBar.value = healthPercentage;
 

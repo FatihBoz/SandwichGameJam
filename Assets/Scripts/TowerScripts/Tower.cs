@@ -9,6 +9,7 @@ public class Tower : MonoBehaviour
     public Sprite towerIcon;
     public float maxHealth = 100f;  // Kule i�in maksimum can
     private float currentHealth;
+    public GameObject myHealthBar;
 
     void Start()
     {
@@ -23,6 +24,7 @@ public class Tower : MonoBehaviour
         print("kule can�:" + currentHealth);
         if (currentHealth <= 0)
         {
+            Destroy(myHealthBar);
             DestroyTower();  // Can s�f�rlan�rsa kule yok edilir
         }
     }
