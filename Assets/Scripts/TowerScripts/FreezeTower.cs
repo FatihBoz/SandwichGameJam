@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HellTower : MonoBehaviour
+public class FreezeTower : Tower
 {
     public Transform player;
     public float detectionRange = 10f;
@@ -11,7 +11,7 @@ public class HellTower : MonoBehaviour
 
     void Update()
     {
-        // Mesafe kontrolü
+        // Mesafe kontrolï¿½
         float distance = Vector3.Distance(transform.position, player.position);
         if (distance <= detectionRange)
         {
@@ -20,19 +20,19 @@ public class HellTower : MonoBehaviour
         else
         {
             isPlayerInRange = false;
-            timer = 0f; // Mesafeden çýkarsa sayacý sýfýrla
+            timer = 0f; // Mesafeden ï¿½ï¿½karsa sayacï¿½ sï¿½fï¿½rla
         }
 
-        // Geri sayým
+        // Geri sayï¿½m
         if (isPlayerInRange)
         {
             timer += Time.deltaTime;
-            //transform.LookAt(player); // Kule oyuncuya bakýyor
+            //transform.LookAt(player); // Kule oyuncuya bakï¿½yor
 
             if (timer >= freezeTime)
             {
                 FreezePlayer();
-                timer = 0f; // Tekrar çalýþtýrmak için sýfýrla
+                timer = 0f; // Tekrar ï¿½alï¿½ï¿½tï¿½rmak iï¿½in sï¿½fï¿½rla
             }
         }
     }
@@ -49,8 +49,8 @@ public class HellTower : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        // Kule menzilini görselleþtirme
-        Gizmos.color = Color.blue; // Renk ayarý
-        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil çemberi
+        // Kule menzilini gï¿½rselleï¿½tirme
+        Gizmos.color = Color.blue; // Renk ayarï¿½
+        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil ï¿½emberi
     }
 }
