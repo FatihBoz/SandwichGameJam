@@ -9,12 +9,11 @@ public class PlacementUI : MonoBehaviour
     public Placement placementLocation;
     public TowerImage towerIconPrefab;
     public Transform towerIconParent;
+    public Transform towerList;
     private List<TowerImage> selectableImages;
 
     [SerializeField] private float offSetY = 3f;
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
+
     void Awake()
     {
         Instance=this;
@@ -42,7 +41,7 @@ public class PlacementUI : MonoBehaviour
         {
             foreach (var item in placementLocation.towerPrefabs)
             {
-                TowerImage instantiedImage = Instantiate(towerIconPrefab,towerIconParent);
+                TowerImage instantiedImage = Instantiate(towerIconPrefab,towerList);
                 instantiedImage.SetImageIcon(item.towerIcon);
                 instantiedImage.SetTower(item);
 
