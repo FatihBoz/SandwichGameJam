@@ -27,7 +27,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
 
     private Animator animator;
-
+    private int comboCount=0;
 
     private void Awake()
     {
