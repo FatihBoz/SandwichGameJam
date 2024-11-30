@@ -1,26 +1,31 @@
 using UnityEngine;
-using UnityEngine.XR;
 
 public class CycleManager : MonoBehaviour
 {
-    public bool isMorning = true;
+    public bool isMorning = true; // Sabah mý? Akþam mý?
+    public RectTransform center; // Dönüþ merkezini UI elemaný olarak ayarla
+    public RectTransform movingPoint; // Dönen ibre
 
-    public Transform center;
-    public Transform movingPoint;
+    public float rotationDuration = 10f; // Dönüþ süresi (saniye)
+    private float rotationSpeed; // Derece/saniye dönüþ hýzý
+    private float currentRotation = 0f; // Ýbrenin mevcut rotasyonu
 
-    public float rotationDuration = 10f; // saniye CÝnsinden
-    private float rotationSpeed;
+    // SpriteSwitcher objelerini bulmak için
+    private ClockSpriteChanger[] spriteSwitchers;
+    private SpriteChanger[] generalSpriteSwitchers;
 
-    // Oyundaki tüm SpriteSwitcher objelerini bulmak için
-    private SpriteChanger[] spriteSwitchers;
 
     void Start()
     {
-        //Clock
+        // Clock dönüþ hýzýný hesapla
         rotationSpeed = 360f / rotationDuration;
 
+        // Tüm SpriteChanger bileþenlerini bul
+        spriteSwitchers = FindObjectsOfType<ClockSpriteChanger>();
 
-        spriteSwitchers = FindObjectsOfType<SpriteChanger>();
+
+
+
         UpdateSprites();
     }
 
@@ -32,7 +37,10 @@ public class CycleManager : MonoBehaviour
 
     private void UpdateSprites()
     {
-        foreach (SpriteChanger switcher in spriteSwitchers)
+        generalSpriteSwitchers = FindObjectsOfType<SpriteChanger>();
+
+
+        foreach (ClockSpriteChanger switcher in spriteSwitchers)
         {
             if (isMorning)
             {
@@ -43,22 +51,38 @@ public class CycleManager : MonoBehaviour
                 switcher.SwitchToEvening();
             }
         }
+        foreach (SpriteChanger switcher in generalSpriteSwitchers)
+        {
+            Debug.Log("Aloooo" + switcher.gameObject.name);
+            if (isMorning)
+            {
+                switcher.SwitchToMorning();
+            }
+            else
+            {
+                switcher.SwitchToEvening();
+            }
+        }
     }
+
     void Update()
     {
-        movingPoint.RotateAround(center.position, Vector3.forward, -rotationSpeed * Time.deltaTime);
+        // Ýbreyi döndür
+        currentRotation += rotationSpeed * Time.deltaTime;
+        movingPoint.localEulerAngles = new Vector3(0, 0, -currentRotation);
 
-        // Ýbrenin dönüþünü kontrol et
-        if (Mathf.Abs(movingPoint.localEulerAngles.z - 0f) < 0.1f)
+        // Tam dönüþ kontrolü (0 ile 360 arasýnda normalize et)
+        if (currentRotation >= 360f)
         {
-            // Eðer dönüþ tamamlandýysa, ToggleDayNight fonksiyonunu çaðýr
-            ToggleDayNight();
+            Debug.Log("Föngüüüüü");
+            currentRotation -= 360f;
+            ToggleDayNight(); // Dönüþ tamamlanýnca gece-gündüz geçiþi
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) // T'ye basýnca sabah/akþam deðiþir
+        // Manuel sabah/akþam geçiþi için (Test için T tuþu)
+        if (Input.GetKeyDown(KeyCode.T))
         {
             ToggleDayNight();
         }
     }
-
 }
