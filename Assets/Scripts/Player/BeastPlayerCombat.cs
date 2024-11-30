@@ -109,7 +109,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         if (currentHp <= 0)
         {
             //GEBER
-            print("geberdin");
+            print("geberdin"); //Asla gebermem
         }
 
     }

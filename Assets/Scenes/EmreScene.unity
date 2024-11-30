@@ -1038,6 +1038,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Clock
       objectReference: {fileID: 0}
+    - target: {fileID: 3520952227116765576, guid: daf9604b542e85448ad3f2a05d7b8a8a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520952227116765576, guid: daf9604b542e85448ad3f2a05d7b8a8a, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3520952227116765576, guid: daf9604b542e85448ad3f2a05d7b8a8a, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3943232031137911960, guid: daf9604b542e85448ad3f2a05d7b8a8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18
