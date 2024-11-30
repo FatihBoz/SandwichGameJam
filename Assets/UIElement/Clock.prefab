@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3626125516053590975}
   - component: {fileID: 3520952227116765576}
+  - component: {fileID: 1376204329922392166}
   m_Layer: 0
   m_Name: Hourhand
   m_TagString: Untagged
@@ -26,8 +27,8 @@ Transform:
   m_GameObject: {fileID: 386560387507994120}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.24308014, y: 0, z: 0}
-  m_LocalScale: {x: 0.42391083, y: 0.0745, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3943232031137911960}
@@ -73,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa584f8f36b38a146a1aa43a82592837, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,6 +85,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1376204329922392166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386560387507994120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80508116aafaa7409777f6363c17116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  morningSprite: {fileID: 21300000, guid: aa584f8f36b38a146a1aa43a82592837, type: 3}
+  eveningSprite: {fileID: 21300000, guid: 0eae0f390ba390d45b2cfce0a47fbde5, type: 3}
 --- !u!1 &2064806207435222929
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3943232031137911960}
   - component: {fileID: 4845564584622921344}
+  - component: {fileID: -2870309342877312752}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Untagged
@@ -111,7 +127,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18, y: 9, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7331959629159321025}
@@ -159,7 +175,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d430aa1d60cb2184ca33a73c2fbe92f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -170,6 +186,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-2870309342877312752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064806207435222929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80508116aafaa7409777f6363c17116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  morningSprite: {fileID: 21300000, guid: d430aa1d60cb2184ca33a73c2fbe92f6, type: 3}
+  eveningSprite: {fileID: 21300000, guid: ac2545130c2fa6443bc91540c950f9d9, type: 3}
 --- !u!1 &7280769473541319535
 GameObject:
   m_ObjectHideFlags: 0
