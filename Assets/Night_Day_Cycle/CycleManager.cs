@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class CycleManager : MonoBehaviour
 
     public TextMeshProUGUI dayText;
 
+    public static Action OnBuildingDisabled;
+
     void Start()
     {
         // Clock dönüþ hýzýný hesapla
@@ -34,8 +37,14 @@ public class CycleManager : MonoBehaviour
 
     public void ToggleDayNight()
     {
+        if (!isMorning)
+        {
+            OnBuildingDisabled?.Invoke();
+        }
+
         if(increaseDayCount == 1)
         {
+            
             dayCount++;
             increaseDayCount = 0;
         }
