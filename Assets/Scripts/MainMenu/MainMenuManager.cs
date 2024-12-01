@@ -5,10 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class MainMenuManager : MonoBehaviour
+public class MainMenuManager : MonoBehaviour    
 {
     public List<GameObject> objToBeActivated;
     [SerializeField] private Image darkScreen;
+    [SerializeField] private Image background;
+    [SerializeField] private Sprite backgroundSprite;
 
     bool canClick = true;
 
@@ -28,5 +30,10 @@ public class MainMenuManager : MonoBehaviour
             canClick = false;
         }
         
+    }
+
+    public void OnExitButtonPressed()
+    {
+        Application.Quit();
     }
 }
