@@ -18,12 +18,13 @@ public class MovementTutorial : TutorialBase
 
     protected override void SetupTutorial()
     {
-        startPos=playerMovement.transform.position;
+         playerMovement = FindObjectOfType<PlayerMovement>();
+        startPos =playerMovement.transform.position;
 
         
     }
     private void Start() {
-        playerMovement = FindObjectOfType<PlayerMovement>();
+       
     }
     private void Update()
     {
