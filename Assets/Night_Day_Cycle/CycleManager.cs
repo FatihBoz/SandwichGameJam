@@ -76,6 +76,34 @@ public class CycleManager : MonoBehaviour
         // Mesajý göster
         //CutsceneText.gameObject.SetActive(true);
 
+        if (isMorning)
+        {
+            OnDayStarted?.Invoke();
+            CameraControl.GetComponent<CameraControl>().SetTarget(Human);
+
+            Human.gameObject.SetActive(true);
+            Beast.gameObject.SetActive(false);
+
+            HumanPanel.SetActive(true);
+            BeastPanel.SetActive(false);
+
+            Human.gameObject.GetComponent<PlayerPurchase>().AddGold(100);
+        }
+        else
+        {
+            OnNightStarted?.Invoke();
+            CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
+            Beast.gameObject.SetActive(true);
+            Human.gameObject.SetActive(false);
+
+            HumanPanel.SetActive(false);
+            BeastPanel.SetActive(true);
+        }
+
+
+        dayText.text = $"{(isMorning ? "Morning" : "Night")} / Day {dayCount}";
+        UpdateSprites();
+
         // Kýsa bir süre bekle
         yield return new WaitForSecondsRealtime(2f);
 
@@ -114,33 +142,7 @@ public class CycleManager : MonoBehaviour
 
         StartCoroutine(FadeAndReload());
 
-        if (isMorning)
-        {
-            OnDayStarted?.Invoke();
-            CameraControl.GetComponent<CameraControl>().SetTarget(Human);
 
-            Human.gameObject.SetActive(true);
-            Beast.gameObject.SetActive(false);
-
-            HumanPanel.SetActive(true);
-            BeastPanel.SetActive(false);
-
-            Human.gameObject.GetComponent<PlayerPurchase>().AddGold(100);
-        }
-        else
-        {
-            OnNightStarted?.Invoke();
-            CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
-            Beast.gameObject.SetActive(true);
-            Human.gameObject.SetActive(false);
-
-            HumanPanel.SetActive(false);
-            BeastPanel.SetActive(true);
-        }
-
-
-        dayText.text = $"{(isMorning ? "Morning" : "Night")} / Day {dayCount}";
-        UpdateSprites();
     }
 
     private void UpdateSprites()
