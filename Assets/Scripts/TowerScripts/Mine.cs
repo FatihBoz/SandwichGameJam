@@ -1,0 +1,40 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Mine : MonoBehaviour
+{
+    public GameObject GainGoldPanel;
+    private GameObject PlayerGameObject;
+    public bool gainable;
+
+    private int goldAmount = 5;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerGameObject = collision.gameObject;
+
+            GainGoldPanel.SetActive(true);
+
+            gainable = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GainGoldPanel.SetActive(false);
+            gainable = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (gainable && Input.GetKeyDown(KeyCode.E))
+        {
+            PlayerGameObject.GetComponent<PlayerPurchase>().AddGold(goldAmount);
+        }
+    }
+}
