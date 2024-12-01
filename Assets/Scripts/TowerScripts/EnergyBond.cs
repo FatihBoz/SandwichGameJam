@@ -99,6 +99,7 @@ public class EnergyBond : MonoBehaviour
         Rigidbody2D playerRb = target.GetComponent<Rigidbody2D>();
         if (playerRb != null)
         {
+            playerRb.gameObject.GetComponent<Animator>().SetBool("Freeze", true);
             playerRb.velocity = Vector2.zero;
             playerRb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
@@ -119,6 +120,7 @@ public class EnergyBond : MonoBehaviour
         Rigidbody2D playerRb = target.GetComponent<Rigidbody2D>();
         if (playerRb != null)
         {
+            playerRb.gameObject.GetComponent<Animator>().SetBool("Freeze", false);
             playerRb.constraints = RigidbodyConstraints2D.FreezeRotation; // Tüm kýsýtlamalarý kaldýr
         }
 
