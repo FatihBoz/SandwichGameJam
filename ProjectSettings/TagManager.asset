@@ -15,7 +15,7 @@ TagManager:
   - Tower
   - Ground
   - Beast
-  - 
+  - Human
   - 
   - 
   - 
@@ -42,6 +42,12 @@ TagManager:
   - name: background
     uniqueID: 3493683245
     locked: 0
+  - name: cloud
+    uniqueID: 1128809113
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: front
+    uniqueID: 221127673
     locked: 0

@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     {
         float moveDir = InputReceiver.Instance.GetHumanPlayerMoveDirection();
 
-        rb.velocity = new Vector2(moveDir * moveSpeed,0);
+        rb.velocity = new Vector2(moveDir * moveSpeed,rb.velocity.y);
 
         
     }
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
     protected void Jump()
     {
-        rb.velocity = new Vector2(0, jumpSpeed);
+        rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
     }
 
     protected void Animate()
