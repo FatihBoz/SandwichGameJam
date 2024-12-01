@@ -117,7 +117,7 @@ MonoBehaviour:
   price: 100
   towerIcon: {fileID: 21300000, guid: 49f00407db355174e9bbee5672279e73, type: 3}
   maxHealth: 100
-  myHealthBar: {fileID: 1821339932998809462, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
+  myHealthBar: {fileID: 5465612395302837263}
 --- !u!61 &-3698780866825605999
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -275,5 +275,10 @@ PrefabInstance:
 --- !u!224 &1673692142484175445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5018510430851453228, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
+  m_PrefabInstance: {fileID: 5953603157029284729}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5465612395302837263 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1821339932998809462, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
   m_PrefabInstance: {fileID: 5953603157029284729}
   m_PrefabAsset: {fileID: 0}
