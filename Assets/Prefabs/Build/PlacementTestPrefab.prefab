@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 487779060603956273}
   - component: {fileID: 6377353630982256397}
   - component: {fileID: 1466158017099611628}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PlacementTestPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 5.12}
+    oldSize: {x: 4.266667, y: 4.266667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
