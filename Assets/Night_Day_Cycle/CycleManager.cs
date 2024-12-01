@@ -46,7 +46,7 @@ public class CycleManager : MonoBehaviour
     public static Action OnNightStarted;
     public static Action OnDayStarted;
 
-
+    
     private bool isStopped;
 
     void Start()

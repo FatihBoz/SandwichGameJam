@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
@@ -43,6 +44,9 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     private bool ded=false;
 
     public static Action OnDed;
+    
+    private bool animFinished=false;
+    private float Dedtimer;
     private void Awake()
     {
         animator=GetComponent<Animator>();
@@ -56,9 +60,19 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     {
         if (ded)
         {
+            if (!animFinished)
+            {
+                Dedtimer=Time.time;
+            }
+            if (Time.time>=Dedtimer+2.0f && animFinished)
+            {
+                SceneManager.LoadScene(0);
+            }
             return;
         }
+
         elapsedTimeAfterSecondaryAttack += Time.deltaTime;
+
         if (InputReceiver.Instance.GetBeastPlayerSecondaryAttackInput() == 1 &&
             elapsedTimeAfterSecondaryAttack >= secondaryAttackCooldown)
         {
@@ -99,6 +113,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             if (enemy.TryGetComponent<Tower>(out var tower))
             {
                 tower.TakeDamage(15);
+                ScreenShake.Instance.Shake();
             }
         }
 
@@ -151,5 +166,11 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             OnDed?.Invoke();
         }
 
+    }
+
+    public void AnimationFinished()
+    {
+        animFinished=true;
+        Dedtimer=Time.time;
     }
 }
