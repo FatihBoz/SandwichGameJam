@@ -60,6 +60,17 @@ public class CycleManager : MonoBehaviour
         UpdateSprites();
     }
 
+    private void OnEnable() {
+        BeastPlayerCombat.OnDed+=beastDed;
+    }
+    private void OnDisable() {
+        BeastPlayerCombat.OnDed-=beastDed;
+        
+    }
+    private void beastDed()
+    {
+        SetIsStopped(true);
+    }
     private IEnumerator FadeAndReload()
     {
         CutsceneText.text = $"{(isMorning ? "Morning" : "Night")} / Day {dayCount}";
