@@ -123,11 +123,6 @@ public class CycleManager : MonoBehaviour
     {
         isMorning = !isMorning;
 
-        if (isMorning)
-        {
-
-        }
-
         if (increaseDayCount == 1)
         {
 
