@@ -60,7 +60,6 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     void Attack()
     {
-        print("attack inputu al�nd�");
         Vector2 attackDirection = (Vector2)transform.up;
 
         Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, attackRadius, towerLayer);
@@ -73,7 +72,6 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             {
                 if (enemy.TryGetComponent<Tower>(out var tower))
                 {
-                    print("tower health'e ula�t�.");
                     tower.TakeDamage(15);
                 }
             }
@@ -93,24 +91,24 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     public void TakeDamage(float damageAmount)
     {
-        if (playerMovement.IsInvulnerable)
-        {
-            return;
-        }
+        //if (playerMovement.IsInvulnerable)
+        //{
+        //    return;
+        //}
 
-        //HASAR AZALTMA EFEKT� YOKSA
+        ////HASAR AZALTMA EFEKT� YOKSA
 
-        currentHp -= damageAmount;
+        //currentHp -= damageAmount;
 
-        beastHealthBar.fillAmount = currentHp / maxHp;
+        //beastHealthBar.fillAmount = currentHp / maxHp;
 
-        textmanager.ShowDamageText(damageAmount);
+        //textmanager.ShowDamageText(damageAmount);
 
-        if (currentHp <= 0)
-        {
-            //GEBER
-            print("geberdin"); //Asla gebermem
-        }
+        //if (currentHp <= 0)
+        //{
+        //    //GEBER
+        //    print("geberdin"); //Asla gebermem
+        //}
 
     }
 }
