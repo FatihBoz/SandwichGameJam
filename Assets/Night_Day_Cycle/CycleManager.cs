@@ -115,11 +115,11 @@ public class CycleManager : MonoBehaviour
             CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
 
             Beast.position = beastSpawns[BeastSpawnLocation()].position;
-            Beast.gameObject.SetActive(true);
+            Beast.gameObject.SetActive(false);
             Human.gameObject.SetActive(false);
 
             HumanPanel.SetActive(false);
-            BeastPanel.SetActive(true);
+            BeastPanel.SetActive(false);
         }
 
 
@@ -137,6 +137,18 @@ public class CycleManager : MonoBehaviour
         blackScreenCanvasGroup.alpha = 0;
 
         Time.timeScale = 1;
+
+        if(isMorning)
+        {
+            HumanPanel.SetActive(true);
+            BeastPanel.SetActive(false);
+        }
+        else
+        {
+            HumanPanel.SetActive(false);
+            BeastPanel.SetActive(true);
+        }
+
         isFading = false;
     }
 
