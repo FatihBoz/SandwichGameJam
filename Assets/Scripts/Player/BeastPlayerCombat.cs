@@ -17,13 +17,23 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     [SerializeField] int attackDamage = 10;
     [SerializeField] LayerMask towerLayer;
     [SerializeField] float attackAngle = 90f;
-    float elapsedTimeAfterAttack;
 
+    public float doubleAttackTime = 0.1f;
+
+    private float elapsedTimeAfterAttack;
     private bool isAttacking;
     private bool isDoubleAttacking;
 
 
-    public float doubleAttackTime=0.1f;
+    [Header("***SECONDARY ATTACK***")]
+    [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] private float secondaryAttackCooldown = 5f;
+
+
+    private float elapsedTimeAfterSecondaryAttack = 0f;
+
+
 
 
     private Animator animator;
@@ -39,6 +49,11 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     private void Update()
     {
+        if (InputReceiver.Instance.GetBeastPlayerSecondaryAttackInput() == 1 &&
+            elapsedTimeAfterSecondaryAttack >= secondaryAttackCooldown)
+        {
+
+        }
 
         elapsedTimeAfterAttack += Time.deltaTime;
 
@@ -85,6 +100,18 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         if (isAttacking)
         {
             isAttacking=false;
+        }
+        
+    }
+
+    private void CastSecondaryAttack()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
+        Vector2 initialScale = projectile.transform.localScale;
+
+        if (transform.localScale.x < 0)
+        {
+            projectile.transform.localScale = new Vector2(-initialScale.x, initialScale.y);
         }
         
     }
