@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -6,21 +7,21 @@ public class EnergyBond : MonoBehaviour
 {
     public Transform TowerFirePoint;
 
-    //[Header("Wave Options")]
-    private int segmentCount = 20; // Çizgi segment sayýsý
-    private float waveAmplitude = 0.5f; // Dalganýn yüksekliði
-    private float waveFrequency = 2f; // Dalganýn sýklýðý
-    private float waveSpeed = 2f; // Dalganýn hareket hýzý
+    #region READONLY
+    private readonly int segmentCount = 20;
+    private readonly float waveAmplitude = 0.5f;
+    private readonly float waveFrequency = 2f;
+    private readonly float waveSpeed = 2f;
+    private readonly float detectionRange = 15f;
+    private readonly float freezeDelay = 3f;
+    private readonly float freezeDuration = 3f;
+    #endregion READONLY
 
-    //[Header("Freeze Options")]
-    private float detectionRange = 15f; // Baðýn oluþacaðý maksimum mesafe
-    private float freezeDelay = 3f; // Dondurucu etkinin tetikleneceði süre
-    private float freezeDuration = 3f; // Oyuncunun donmuþ kalacaðý süre
 
     private LineRenderer lineRenderer;
-    private float playerStayTime = 0f; // Oyuncunun menzilde geçirdiði süre
-    private bool isPlayerFrozen = false; // Oyuncunun dondurulup dondurulmadýðý
-    private float freezeTimer = 0f; // Donma süresi sayacý
+    private float playerStayTime = 0f;
+    private bool isPlayerFrozen = false;
+    private float freezeTimer = 0f;
 
 
     private GameObject target;
@@ -130,10 +131,18 @@ public class EnergyBond : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    private void EnergyBond_OnDayStarted()
     {
-        // Kule menzilini görselleþtirme
-        Gizmos.color = Color.blue; // Renk ayarý
-        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil çemberi
+        target = null;
+    }
+
+    private void OnEnable()
+    {
+        CycleManager.OnDayStarted += EnergyBond_OnDayStarted;
+    }
+
+    private void OnDisable()
+    {
+        CycleManager.OnDayStarted -= EnergyBond_OnDayStarted;
     }
 }

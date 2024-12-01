@@ -39,7 +39,8 @@ public class CycleManager : MonoBehaviour
 
     public TextMeshProUGUI dayText;
 
-    public static Action OnBuildingDisabled;
+    public static Action OnNightStarted;
+    public static Action OnDayStarted;
 
     void Start()
     {
@@ -93,6 +94,12 @@ public class CycleManager : MonoBehaviour
     public void ToggleDayNight()
     {
         isMorning = !isMorning;
+
+        if (isMorning)
+        {
+
+        }
+
         if (increaseDayCount == 1)
         {
 
@@ -105,11 +112,11 @@ public class CycleManager : MonoBehaviour
 
         }
 
-        Debug.Log("Aloo gün deðiþti alo");
         StartCoroutine(FadeAndReload());
 
         if (isMorning)
         {
+            OnDayStarted?.Invoke();
             CameraControl.GetComponent<CameraControl>().SetTarget(Human);
 
             Human.gameObject.SetActive(true);
@@ -122,17 +129,13 @@ public class CycleManager : MonoBehaviour
         }
         else
         {
+            OnNightStarted?.Invoke();
             CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
             Beast.gameObject.SetActive(true);
             Human.gameObject.SetActive(false);
 
             HumanPanel.SetActive(false);
             BeastPanel.SetActive(true);
-        }
-
-        if (!isMorning)
-        {
-            OnBuildingDisabled?.Invoke();
         }
 
 

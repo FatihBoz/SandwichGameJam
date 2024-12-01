@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
+
 
 public class Tower : MonoBehaviour
 {
@@ -13,30 +11,27 @@ public class Tower : MonoBehaviour
 
     void Start()
     {
-        // Kule ba�lang��ta tam cana sahip olacak
         currentHealth = maxHealth;
     }
 
-    // Kuleye hasar verme fonksiyonu
     public void TakeDamage(float damage)
     {
-        currentHealth -= damage;  // Hasar verilir
+        currentHealth -= damage;
         print("kule can�:" + currentHealth);
         if (currentHealth <= 0)
         {
             Destroy(myHealthBar);
-            DestroyTower();  // Can s�f�rlan�rsa kule yok edilir
+            DestroyTower();
         }
     }
 
-    // Kule yok edilince yap�lacak i�lemler
+
     void DestroyTower()
     {
         Debug.Log(gameObject.name + " kule yok oldu!");
-        Destroy(gameObject);  // Kuleyi yok et
+        Destroy(gameObject);
     }
 
-    // Kule can�n� al
     public float GetCurrentHealth()
     {
         return currentHealth;

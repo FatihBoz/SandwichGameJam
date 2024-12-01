@@ -53,4 +53,6 @@ public class FreezeTower : Tower
         Gizmos.color = Color.blue; // Renk ayar�
         Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil �emberi
     }
+
+
 }
