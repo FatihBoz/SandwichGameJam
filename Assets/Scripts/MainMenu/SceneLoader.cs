@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class AsyncSceneLoader : MonoBehaviour
 {
     [Header("Loading Screen")]
     public GameObject loadingScreen;
@@ -12,7 +12,7 @@ public class SceneLoader : MonoBehaviour
 
     private void Start()
     {
-        LoadScene("FatihScene");
+        //LoadScene("Level1");
     }
     public async void LoadScene(string sceneName)
     {

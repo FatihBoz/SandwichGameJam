@@ -70,7 +70,9 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             }
             return;
         }
+
         elapsedTimeAfterSecondaryAttack += Time.deltaTime;
+
         if (InputReceiver.Instance.GetBeastPlayerSecondaryAttackInput() == 1 &&
             elapsedTimeAfterSecondaryAttack >= secondaryAttackCooldown)
         {
@@ -111,6 +113,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             if (enemy.TryGetComponent<Tower>(out var tower))
             {
                 tower.TakeDamage(15);
+                ScreenShake.Instance.Shake();
             }
         }
 

@@ -1,8 +1,10 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -11,43 +13,70 @@ public class Cinematic : MonoBehaviour
     [SerializeField] private List<PageSO> pages;
     [SerializeField] private Image img;
     [SerializeField] private TextMeshProUGUI subtitle;
-    [SerializeField] private GameObject darkScreen;
-    [SerializeField] private float timeBetweenPageDisplays = 1.5f;
+    [SerializeField] private Image darkScreen;
+    [SerializeField] private float waitingTime = .75f;
+    [SerializeField] private GameObject subtitleBackground;
 
-    private int listCounter = 0; 
+    [SerializeField] private MainMenuManager mainMenuManager;
+
+    private int listCounter = 0;
+    float elapsedTime = 0f;
+    float timeBetweenTransitions = 2f;
+
+    bool canStart;
+
 
     private void Start()
     {
-        darkScreen.SetActive(false);
+        darkScreen.DOFade(0f, waitingTime).OnComplete(OnFirstDarkScreenVanished);
         UpdatePage();
     }
 
-    public void OnImageClicked()
+
+    private void Update()
     {
-        if (listCounter < pages.Count)
+        if (!canStart)
         {
-            StartCoroutine(SwitchPageRoutine());
+            return;
         }
+
+        elapsedTime += Time.deltaTime;
+
+        if (listCounter >= pages.Count)
+        {
+            StartCoroutine(DelayedSceneChange());
+            canStart = false;
+            return;
+        }
+
+         if (elapsedTime > timeBetweenTransitions)
+        {
+            StartCoroutine (SwitchPageRoutine());
+            elapsedTime = 0f;
+        }
+
+        
     }
 
 
     private IEnumerator SwitchPageRoutine()
     {
-        darkScreen.SetActive(true);
-        darkScreen.GetComponent<Image>().DOFade(1, 0.5f);
-
-        yield return new WaitForSeconds(0.5f);
+        canStart = false;
+        darkScreen.gameObject.SetActive(true);
+        darkScreen.DOFade(1, waitingTime);
+        subtitle.DOFade(0, waitingTime);
+        yield return new WaitForSeconds(waitingTime);
 
         UpdatePage();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(waitingTime);
 
-        darkScreen.GetComponent<Image>().DOFade(0, 0.5f).onComplete = () =>
-        {
-            darkScreen.SetActive(false);
-        };
+        subtitle.DOFade(1f,waitingTime);
+        darkScreen.DOFade(0, waitingTime);
 
-        yield return new WaitForSeconds(0.5f);
+
+        yield return new WaitForSeconds(waitingTime);
+        canStart = true;
     }
 
 
@@ -58,6 +87,21 @@ public class Cinematic : MonoBehaviour
             img.sprite = pages[listCounter].Sprite;
             subtitle.text = pages[listCounter].Subtitle;
             listCounter++;
+        }
+    }
+
+    void OnFirstDarkScreenVanished()
+    {
+        canStart = true;
+    }
+
+    private IEnumerator DelayedSceneChange()
+    {
+        yield return new WaitForSeconds(timeBetweenTransitions);
+        
+        foreach (GameObject obj in mainMenuManager.objToBeActivated)
+        {
+            obj.SetActive(false);
         }
     }
 }
