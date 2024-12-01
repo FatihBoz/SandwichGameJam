@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CycleManager : MonoBehaviour
@@ -23,7 +23,7 @@ public class CycleManager : MonoBehaviour
     public Transform Human;
 
     public Transform humanSpawn;
-    public Transform beastSpawn;
+    public List<Transform> beastSpawns;
 
     public GameObject BeastPanel;
     public GameObject HumanPanel;
@@ -114,7 +114,7 @@ public class CycleManager : MonoBehaviour
             OnNightStarted?.Invoke();
             CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
 
-            Beast.position = beastSpawn.position;
+            Beast.position = beastSpawns[BeastSpawnLocation()].position;
             Beast.gameObject.SetActive(true);
             Human.gameObject.SetActive(false);
 
@@ -141,6 +141,13 @@ public class CycleManager : MonoBehaviour
     }
 
 
+    int BeastSpawnLocation()
+    {
+        return UnityEngine.Random.Range(0, 2);
+    }
+
+
+
     public void ToggleDayNight()
     {
         isMorning = !isMorning;
@@ -155,6 +162,12 @@ public class CycleManager : MonoBehaviour
         {
             increaseDayCount++;
 
+        }
+
+        if (dayCount >= 6)
+        {
+            BeastPlayerCombat.OnDed?.Invoke();
+            return;
         }
 
         StartCoroutine(FadeAndReload());

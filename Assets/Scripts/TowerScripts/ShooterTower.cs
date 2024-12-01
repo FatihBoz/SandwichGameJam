@@ -92,21 +92,25 @@ public class ShooterTower : Tower
     }
 
 
-    private void ShooterTower_OnDayStarted()
+    private void SetTargetNull()
     {
         target = null;
     }
 
+
+
     protected override void OnEnable()
     {
         base.OnEnable();
-        CycleManager.OnDayStarted += ShooterTower_OnDayStarted;
+        CycleManager.OnDayStarted += SetTargetNull;
+        BeastPlayerCombat.OnDed += SetTargetNull;
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        CycleManager.OnDayStarted -= ShooterTower_OnDayStarted;
+        CycleManager.OnDayStarted -= SetTargetNull;
+        BeastPlayerCombat.OnDed -= SetTargetNull;
     }
 
 }

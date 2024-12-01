@@ -66,7 +66,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
             }
             if (Time.time>=Dedtimer+2.0f && animFinished)
             {
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene("MainMenu");
             }
             return;
         }
@@ -158,15 +158,28 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
         if (currentHp <= 0)
         {
-            //GEBER
-            print("geberdin"); //Asla gebermem
-            ded=true;
-            playerMovement.SetIsStopped(true);
-            animator.SetBool("ded",true);
             OnDed?.Invoke();
         }
 
     }
+    private void BPC_OnDeath()
+    {
+        print("geberdin"); //Asla gebermem
+        ded = true;
+        playerMovement.SetIsStopped(true);
+        animator.SetBool("ded", true);
+    }
+
+    private void OnEnable()
+    {
+        BeastPlayerCombat.OnDed += BPC_OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        BeastPlayerCombat.OnDed -= BPC_OnDeath;
+    }
+
 
     public void AnimationFinished()
     {

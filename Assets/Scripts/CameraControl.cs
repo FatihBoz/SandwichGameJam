@@ -36,7 +36,7 @@ public class CameraControl : MonoBehaviour
     {
         if (ded)
         {
-            Camera.main.orthographicSize-=Time.deltaTime;
+            Camera.main.orthographicSize-=Time.deltaTime *2;
         }
         // Ensure we have a target to follow
         if (target == null)
