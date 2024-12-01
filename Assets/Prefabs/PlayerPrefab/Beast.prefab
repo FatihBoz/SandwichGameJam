@@ -268,8 +268,9 @@ MonoBehaviour:
   textmanager: {fileID: 0}
   beastHealthBar: {fileID: 0}
   maxHp: 100
+  attackPoint: {fileID: 1579604057546963977}
   attackCooldown: 0.4
-  attackRadius: 9.26
+  attackRadius: 2.4
   attackDamage: 10
   towerLayer:
     serializedVersion: 2
