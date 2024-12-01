@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(LineRenderer))]
 public class EnergyBond : MonoBehaviour

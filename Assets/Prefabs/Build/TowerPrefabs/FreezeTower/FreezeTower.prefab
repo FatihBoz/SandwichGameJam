@@ -252,6 +252,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0053380f43ba6c4dae0ce2dd717ec20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  price: 0
+  towerIcon: {fileID: 0}
+  maxHealth: 100
+  myHealthBar: {fileID: 2451555557745453109}
   TowerFirePoint: {fileID: 253199274206087420}
   detectRadius: 7.5
   beastLayer:

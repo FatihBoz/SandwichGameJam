@@ -89,13 +89,15 @@ public class ShooterTower : Tower
         target = null;
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         CycleManager.OnDayStarted += ShooterTower_OnDayStarted;
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
+        base.OnDisable();
         CycleManager.OnDayStarted -= ShooterTower_OnDayStarted;
     }
 

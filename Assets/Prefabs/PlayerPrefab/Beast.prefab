@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2210325443475148971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1579604057546963977}
+  m_Layer: 8
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1579604057546963977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2210325443475148971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.85, y: -0.74, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2080625655995989406}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5293676873164642943
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,6 +102,7 @@ Transform:
   - {fileID: 7296538097892880378}
   - {fileID: 4789950194755011601}
   - {fileID: 4799909562099958894}
+  - {fileID: 1579604057546963977}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3217092833360316409
@@ -236,14 +268,18 @@ MonoBehaviour:
   textmanager: {fileID: 0}
   beastHealthBar: {fileID: 0}
   maxHp: 100
+  attackPoint: {fileID: 1579604057546963977}
   attackCooldown: 0.4
-  attackRadius: 9.26
+  attackRadius: 2.4
   attackDamage: 10
   towerLayer:
     serializedVersion: 2
     m_Bits: 64
   attackAngle: 90
   doubleAttackTime: 0.25
+  projectilePrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
+  secondaryAttackCooldown: 5
 --- !u!95 &1904970369591779730
 Animator:
   serializedVersion: 5
