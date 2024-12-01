@@ -117,6 +117,8 @@ public class CycleManager : MonoBehaviour
 
             HumanPanel.SetActive(true);
             BeastPanel.SetActive(false);
+
+            Human.gameObject.GetComponent<PlayerPurchase>().AddGold(100);
         }
         else
         {
