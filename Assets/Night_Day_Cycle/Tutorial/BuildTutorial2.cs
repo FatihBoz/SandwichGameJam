@@ -6,22 +6,23 @@ public class BuildTutorial2 : TutorialBase
 {
     private PlayerPurchase playerPurchase;
     private PlayerMovement playerMovement;
+    private int currentGold;
 
     protected override bool CheckTutorialCompletion()
     {
-        return playerPurchase.GetCurrentGold() < 100;
+        return playerPurchase.GetCurrentGold() < currentGold;
     }
 
     protected override void SetupTutorial()
     {
-        playerPurchase=FindObjectOfType<PlayerPurchase>();
-        playerMovement=FindObjectOfType<PlayerMovement>();
-    }
 
-    public override void StartTutorial()
-    {
-        base.StartTutorial();
+        
         playerMovement.SetIsStopped(true);
+        currentGold=playerPurchase.GetCurrentGold();
+    }
+    private void Start() {
+                playerPurchase=FindObjectOfType<PlayerPurchase>();
+        playerMovement=FindObjectOfType<PlayerMovement>();
     }
        private void Update()
     {

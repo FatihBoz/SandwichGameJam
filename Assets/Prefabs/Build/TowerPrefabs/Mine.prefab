@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6422112052943725053}
   - component: {fileID: 3909478937838612004}
   - component: {fileID: 6116843138394218437}
+  - component: {fileID: 5529423435602380325}
   m_Layer: 0
   m_Name: Mine
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 55.9908, y: -2.4, z: 0}
-  m_LocalScale: {x: 6.7807217, y: 8.8459, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6b90058cd1216ed48863c471439a2a33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,14 +116,14 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.037549645, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10.67, y: 12.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -143,5 +144,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abff383714c1d954a9b061e5212ac050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GainGoldPanel: {fileID: 0}
+  GainGoldPanel: {fileID: 4114400352198170477, guid: a72f352a69bfffc41b7c013cb1b6ab98, type: 3}
   gainable: 0
+--- !u!114 &5529423435602380325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111355713354424508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80508116aafaa7409777f6363c17116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  morningSprite: {fileID: 21300000, guid: 6b90058cd1216ed48863c471439a2a33, type: 3}
+  eveningSprite: {fileID: 21300000, guid: 240316d6110e29e4abbf873f270a5b6c, type: 3}
