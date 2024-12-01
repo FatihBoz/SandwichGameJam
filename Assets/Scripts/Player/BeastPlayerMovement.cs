@@ -15,30 +15,28 @@ public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
 
     protected override void FixedUpdate()
     {
-        // Oyuncunun zeminde olup olmadýðýný kontrol et.
         isGrounded = GroundCheck();
 
-        // Eðer dodge iþlemi aktifse PerformDodge çaðrýlýr.
         if (isDodging)
         {
             PerformDodge();
         }
 
-        // Zýplama girdisi alýnýr.
+
         if (InputReceiver.Instance.GetBeastPlayerJumpInput() == 1 && isGrounded)
         {
             Jump();
         }
 
-        // Dodge giriþini kontrol et.
+
         if (InputReceiver.Instance.GetBeastPlayerDodgeInput() == 1
-            && Time.time >= lastDodgeTime + timeBetweenDodges // Dodge bekleme süresi dolmuþ mu?
-            && !isDodging) // Hali hazýrda dodge yapýlmýyor mu?
+            && Time.time >= lastDodgeTime + timeBetweenDodges 
+            && !isDodging)
         {
             StartDodge();
         }
 
-        // Hareket ve diðer iþlevleri çalýþtýr.
+ 
         Move();
         RotatePlayer();
         Animate();
@@ -46,43 +44,32 @@ public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
 
     private void StartDodge()
     {
-        // Dodge iþlemini baþlat.
         isDodging = true;
-        lastDodgeTime = Time.time; // Dodge baþlangýç zamanýný kaydet.
-        dodgeStartTime = Time.time; // Dodge süresini baþlat.
-        dodgeDirection = GetDodgeDirection(); // Dodge yönünü al.
-        animator.SetBool("isDodging", true); // Animasyonu tetikle.
-        print("Dodge baþladý.");
+        lastDodgeTime = Time.time;
+        dodgeStartTime = Time.time;
+        dodgeDirection = GetDodgeDirection();
+        animator.SetBool("isDodging", true); 
     }
 
     private void PerformDodge()
     {
-        // Dodge iþlemi sürüyor mu?
         float elapsedTime = Time.time - dodgeStartTime;
 
         if (elapsedTime > dodgeTime)
         {
-            EndDodge(); // Dodge iþlemini bitir.
+            EndDodge();
         }
         else
         {
-            // Karakter dodge yönüne doðru hareket eder.
             transform.position += dodgeDirection * Time.fixedDeltaTime / dodgeTime * dodgeDistance;
         }
     }
 
     private void EndDodge()
     {
-        animator.SetBool("isDodging", false); // Animasyon durduruluyor.
-        isDodging = false; // Dodge iþlemi tamamlandý.
-        print("Dodge bitti.");
+        animator.SetBool("isDodging", false);
+        isDodging = false;
     }
-
-    //private IEnumerator DodgeCooldown()
-    //{
-    //    yield return new WaitForSeconds(timeBetweenDodges);
-    //    canDodge = true;
-    //}
 
 
     protected override void Move()
@@ -109,7 +96,7 @@ public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
     {
         Vector2 moveDirection = new Vector2(InputReceiver.Instance.GetBeastPlayerMoveDirection(),0);
         //if character does not move dash towards its own direction.Else dash according to movement.
-        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : new Vector2(rb.velocity.x, 0).normalized;
+        return !moveDirection.Equals(Vector2.zero) ? new Vector2(moveDirection.x, 0) : new Vector2(transform.localScale.x, 0).normalized;
     }
 
     public bool IsInvulnerable => isDodging;

@@ -9,11 +9,11 @@ public class ShooterTower : Tower
 
 
     [Header("Tower Options")]
-    public float projectileSpeed = 0.1f; // Obje f�rlatma h�z�
-    public float fireRate = 1f; // Ate� etme s�kl���
-    public float detectionRange = 5f; // Menzil
+    public float projectileSpeed = 0.1f;
+    public float fireRate = 1f;
+    public float detectionRange = 5f;
 
-    private float nextFireTime = 0f; // Ate� etme zaman�
+    private float nextFireTime = 0f;
 
     private GameObject target;
     [SerializeField] private float detectRadius = 7.5f;
@@ -84,11 +84,19 @@ public class ShooterTower : Tower
     }
 
 
-    private void OnDrawGizmos()
+    private void ShooterTower_OnDayStarted()
     {
-        // Kule menzilini g�rselle�tirme
-        Gizmos.color = Color.red; // Renk ayar�
-        Gizmos.DrawWireSphere(transform.position, detectionRange); // Menzil �emberi
+        target = null;
+    }
+
+    private void OnEnable()
+    {
+        CycleManager.OnDayStarted += ShooterTower_OnDayStarted;
+    }
+
+    private void OnDisable()
+    {
+        CycleManager.OnDayStarted -= ShooterTower_OnDayStarted;
     }
 
 }
