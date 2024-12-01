@@ -15,6 +15,10 @@ public class UITutorial : TutorialBase
 
     protected override void SetupTutorial()
     {
+        
+       arrowPointer.gameObject.SetActive(true);
+       arrowPointer.eulerAngles=new Vector3(0,0,rotateAmount);
+        arrowPointer.localPosition=position;
     }
 
     private void Update()
@@ -24,14 +28,6 @@ public class UITutorial : TutorialBase
             CompleteTutorial();
         }
 }
-    public override void StartTutorial()
-    {
-        base.StartTutorial();
-       arrowPointer.gameObject.SetActive(true);
-       arrowPointer.eulerAngles=new Vector3(0,0,rotateAmount);
-        arrowPointer.localPosition=position;
-        Debug.Log(gameObject.name);
-    }
     protected override void CompleteTutorial()
     {
         arrowPointer.gameObject.SetActive(false);
