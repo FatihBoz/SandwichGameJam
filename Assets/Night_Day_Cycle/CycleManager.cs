@@ -21,6 +21,10 @@ public class CycleManager : MonoBehaviour
     [Header("Character Options")]
     public Transform Beast;
     public Transform Human;
+
+    public Transform humanSpawn;
+    public Transform beastSpawn;
+
     public GameObject BeastPanel;
     public GameObject HumanPanel;
 
@@ -47,6 +51,7 @@ public class CycleManager : MonoBehaviour
 
     void Start()
     {
+        Human.position = humanSpawn.position;
 
         Human.gameObject.SetActive(true);
         Beast.gameObject.SetActive(false);
@@ -95,7 +100,7 @@ public class CycleManager : MonoBehaviour
         {
             OnDayStarted?.Invoke();
             CameraControl.GetComponent<CameraControl>().SetTarget(Human);
-
+            Human.position = humanSpawn.position;
             Human.gameObject.SetActive(true);
             Beast.gameObject.SetActive(false);
 
@@ -108,6 +113,8 @@ public class CycleManager : MonoBehaviour
         {
             OnNightStarted?.Invoke();
             CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
+
+            Beast.position = beastSpawn.position;
             Beast.gameObject.SetActive(true);
             Human.gameObject.SetActive(false);
 
