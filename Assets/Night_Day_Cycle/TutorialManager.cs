@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -9,7 +10,9 @@ public class TutorialManager : MonoBehaviour
     private CycleManager cycleManager;
 
     [SerializeField] private TutorialBase[] tutorials;
-    
+    [SerializeField] private GameObject panel;
+    [SerializeField] private TMP_Text text;  
+
     private int currentTutorialIndex = 0;
 
     private void Start()
@@ -21,6 +24,8 @@ public class TutorialManager : MonoBehaviour
         foreach (var tutorial in tutorials)
         {
             tutorial.OnTutorialCompleted += MoveToNextTutorial;
+            tutorial.descriptionText = text;
+            tutorial.tutorialPanel=panel;
         }
 
         // Start first tutorial

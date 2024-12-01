@@ -576,10 +576,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8483465090729759159, guid: f247d8853d8c0f744b7b1d3130da7135, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1665,10 +1661,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3909478937838612004, guid: f07d239aea0300246a7180d2d299bdff, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6116843138394218437, guid: f07d239aea0300246a7180d2d299bdff, type: 3}
       propertyPath: GainGoldPanel
       value: 
@@ -1716,10 +1708,6 @@ PrefabInstance:
     - target: {fileID: 8111355713354424508, guid: f07d239aea0300246a7180d2d299bdff, type: 3}
       propertyPath: m_Name
       value: Mine
-      objectReference: {fileID: 0}
-    - target: {fileID: 8111355713354424508, guid: f07d239aea0300246a7180d2d299bdff, type: 3}
-      propertyPath: m_Layer
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2465,14 +2453,6 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 405762693}
-    - target: {fileID: 2410857038961221698, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
-      propertyPath: tutorialPanel
-      value: 
-      objectReference: {fileID: 2008130763}
-    - target: {fileID: 2410857038961221698, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
-      propertyPath: descriptionText
-      value: 
-      objectReference: {fileID: 405762693}
     - target: {fileID: 2718168633414756751, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
       propertyPath: tutorialPanel
       value: 
@@ -2573,6 +2553,14 @@ PrefabInstance:
       propertyPath: descriptionText
       value: 
       objectReference: {fileID: 405762693}
+    - target: {fileID: 9072578716112393894, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 405762693}
+    - target: {fileID: 9072578716112393894, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 2008130763}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

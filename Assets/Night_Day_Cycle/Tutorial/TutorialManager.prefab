@@ -61,6 +61,8 @@ MonoBehaviour:
   - {fileID: 2718168633414756751}
   - {fileID: 8816799525189222959}
   - {fileID: 2827549690881411718}
+  panel: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &2410857038961221698
 MonoBehaviour:
   m_ObjectHideFlags: 0
