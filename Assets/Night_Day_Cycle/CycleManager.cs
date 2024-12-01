@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -8,10 +9,17 @@ public class CycleManager : MonoBehaviour
     int dayCount = 1;
     int increaseDayCount = 0;
 
+    [Header("Fade Options")]
+    public CanvasGroup blackScreenCanvasGroup; // Siyah ekran
+    private bool isFading = false;
+    public float fadeDuration = 1f; // Siyahlaþma süresi
+    public TextMeshProUGUI CutsceneText;
+
     private bool isMorning = true; // Sabah mý? Akþam mý?
+
+    [Header("Clock Options")]
     public RectTransform center; // Dönüþ merkezini UI elemaný olarak ayarla
     public RectTransform movingPoint; // Dönen ibre
-
     public float rotationDuration = 10f; // Dönüþ süresi (saniye)
     private float rotationSpeed; // Derece/saniye dönüþ hýzý
     private float currentRotation = 0f; // Ýbrenin mevcut rotasyonu
@@ -35,8 +43,46 @@ public class CycleManager : MonoBehaviour
         UpdateSprites();
     }
 
+    private IEnumerator FadeAndReload()
+    {
+        Debug.Log("Ýçerideyiz ");
+
+        isFading = true;
+
+        // Oyun durduruluyor
+        Time.timeScale = 0;
+
+        // Ekraný siyahlaþtýr
+        for (float t = 0; t <= fadeDuration; t += Time.unscaledDeltaTime)
+        {
+            blackScreenCanvasGroup.alpha = t / fadeDuration;
+            yield return null;
+        }
+        blackScreenCanvasGroup.alpha = 1;
+
+        // Mesajý göster
+        CutsceneText.text = $"{(isMorning ? "Morning" : "Night")} / Day : {dayCount}"; 
+        //CutsceneText.gameObject.SetActive(true);
+
+        // Kýsa bir süre bekle
+        yield return new WaitForSecondsRealtime(2f);
+
+        for (float t = fadeDuration; t >= 0; t -= Time.unscaledDeltaTime)
+        {
+            blackScreenCanvasGroup.alpha = t / fadeDuration;
+            yield return null;
+        }
+        blackScreenCanvasGroup.alpha = 0;
+
+        Time.timeScale = 1;
+        isFading = false;
+    }
+
+
     public void ToggleDayNight()
     {
+        Debug.Log("Aloo gün deðiþti alo");
+        StartCoroutine(FadeAndReload()); // Coroutine olarak baþlat
         if (!isMorning)
         {
             OnBuildingDisabled?.Invoke();
