@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Scene1
   m_EditorClassIdentifier: 
   subtitle: "Among lively forests, a cute girl lived in a cozy house.\nBut\_lately..."
-  sprite: {fileID: 21300000, guid: 6e1eb47a1521de943b3b195f20661961, type: 3}
+  sprite: {fileID: 21300000, guid: b17dc8ab29d5d69428283949e9493366, type: 3}

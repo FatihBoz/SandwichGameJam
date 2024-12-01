@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Scene4
   m_EditorClassIdentifier: 
   subtitle: "So she decided to protect her house by building\_towers."
-  sprite: {fileID: 21300000, guid: 6c9b3a9949ff25141b205cda81c83e30, type: 3}
+  sprite: {fileID: 21300000, guid: be6048f8403569e41be8086b733d1fbb, type: 3}

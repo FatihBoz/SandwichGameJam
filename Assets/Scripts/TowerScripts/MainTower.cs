@@ -1,8 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+
 
 public class MainTower : Tower
 {
-
+    private void OnDestroy()
+    {
+        BeastPlayerCombat.OnDed?.Invoke();
+    }
 }

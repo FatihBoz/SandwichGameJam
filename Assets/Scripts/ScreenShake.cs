@@ -15,7 +15,6 @@ public class ScreenShake : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        originalPosition = transform.position;
     }
 
 
@@ -31,6 +30,8 @@ public class ScreenShake : MonoBehaviour
 
     private IEnumerator ShakeCoroutine()
     {
+        originalPosition = transform.position;
+
         float elapsed = 0f;
 
         while (elapsed < duration)

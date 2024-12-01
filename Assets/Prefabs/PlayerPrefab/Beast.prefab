@@ -269,6 +269,7 @@ MonoBehaviour:
   textmanager: {fileID: 0}
   beastHealthBar: {fileID: 0}
   maxHp: 100
+  yOffSetAfterDie: -1
   attackPoint: {fileID: 338642547783680715}
   attackCooldown: 0.4
   attackRadius: 2.4
@@ -276,7 +277,6 @@ MonoBehaviour:
   towerLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackAngle: 90
   doubleAttackTime: 0.25
   projectilePrefab: {fileID: 7238722314650176299, guid: 312fe57281a820a4d859d10a7769c30f, type: 3}
   shootPoint: {fileID: 6326791331881202166}

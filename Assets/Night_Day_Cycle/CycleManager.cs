@@ -115,11 +115,11 @@ public class CycleManager : MonoBehaviour
             CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
 
             Beast.position = beastSpawns[BeastSpawnLocation()].position;
-            Beast.gameObject.SetActive(false);
+            Beast.gameObject.SetActive(true);
             Human.gameObject.SetActive(false);
 
             HumanPanel.SetActive(false);
-            BeastPanel.SetActive(false);
+            BeastPanel.SetActive(true);
         }
 
 

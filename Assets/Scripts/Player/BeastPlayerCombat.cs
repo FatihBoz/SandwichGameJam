@@ -11,6 +11,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     private float currentHp;
     private bool isInvulnerable;
     private IPlayerMovement playerMovement;
+    [SerializeField] private float yOffSetAfterDie = 1f;
 
 
     [Header("***ATTACK***")]
@@ -47,6 +48,9 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     
     private bool animFinished=false;
     private float Dedtimer;
+
+    
+    
     private void Awake()
     {
         animator=GetComponent<Animator>();
@@ -112,7 +116,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         {
             if (enemy.TryGetComponent<Tower>(out var tower))
             {
-                tower.TakeDamage(15);
+                tower.TakeDamage(6);
                 ScreenShake.Instance.Shake();
             }
         }
@@ -169,6 +173,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         playerMovement.SetIsStopped(true);
         animator.SetBool("ded", true);
     }
+
 
     private void OnEnable()
     {

@@ -8,7 +8,7 @@ public class Mine : MonoBehaviour
     private GameObject PlayerGameObject;
     public bool gainable;
 
-    private int goldAmount = 5;
+    private int goldAmount = 2;
 
   
      void OnTriggerEnter2D(Collider2D collision)
