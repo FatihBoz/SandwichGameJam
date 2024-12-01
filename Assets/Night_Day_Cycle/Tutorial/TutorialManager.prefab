@@ -52,11 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc938b928e97edc449e8b9d2bcaf7cd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cycleManager: {fileID: 0}
   tutorials:
   - {fileID: 2410857038961221698}
-  - {fileID: 3756439770775834270}
   - {fileID: 2084331014722432542}
+  - {fileID: 3756439770775834270}
   - {fileID: 3966920051094812887}
   - {fileID: 2718168633414756751}
   - {fileID: 8816799525189222959}
@@ -91,13 +90,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialName: Gold
-  tutorialDescription: Move on UI. Things will be go complex. There is a gold. It
-    shows you how many gold you have. You can purchase tower and something with that
-    gold.
+  tutorialDescription: Move on UI. There is a gold. It shows you how many gold you
+    have. You can purchase tower and something with that gold.
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
-  rotateAmount: 44.94
-  position: {x: -397, y: 266, z: 0}
+  rotateAmount: 33.893
+  position: {x: -220, y: -256, z: 0}
   arrowPointer: {fileID: 0}
 --- !u!114 &3966920051094812887
 MonoBehaviour:
@@ -197,7 +195,7 @@ MonoBehaviour:
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
   rotateAmount: -32.706
-  position: {x: 342, y: 131, z: 0}
+  position: {x: -999, y: -999, z: 0}
   arrowPointer: {fileID: 0}
 --- !u!1 &2190119245994793035
 GameObject:
@@ -250,7 +248,7 @@ MonoBehaviour:
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
   rotateAmount: -32.706
-  position: {x: 342, y: 131, z: 0}
+  position: {x: 306, y: -287, z: 0}
   arrowPointer: {fileID: 0}
 --- !u!1 &2973206116152315834
 GameObject:

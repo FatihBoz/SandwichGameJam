@@ -15,7 +15,7 @@ public class GoldUI : MonoBehaviour
     private void Update() {
         if (playerPurchase!=null)
         {
-            goldText.text="GOLD: "+playerPurchase.GetCurrentGold();            
+            goldText.text=playerPurchase.GetCurrentGold().ToString();            
         }
     }
 }
