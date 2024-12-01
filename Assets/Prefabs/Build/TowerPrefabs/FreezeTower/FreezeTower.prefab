@@ -253,14 +253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TowerFirePoint: {fileID: 253199274206087420}
-  textManager: {fileID: 0}
-  segmentCount: 20
-  waveAmplitude: 0.5
-  waveFrequency: 2
-  waveSpeed: 2
-  detectionRange: 10
-  freezeDelay: 3
-  freezeDuration: 5
   detectRadius: 7.5
   beastLayer:
     serializedVersion: 2
@@ -280,6 +272,7 @@ MonoBehaviour:
   price: 65
   towerIcon: {fileID: 21300000, guid: 3ad12ad6995cde7479692d921035a6de, type: 3}
   maxHealth: 100
+  myHealthBar: {fileID: 2451555557745453109}
 --- !u!114 &1532051219359015583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -434,6 +427,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
+--- !u!1 &2451555557745453109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1821339932998809462, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
+  m_PrefabInstance: {fileID: 4270291843971669827}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &9144079017753939567 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5018510430851453228, guid: 55e1968b98306b841a76b02a22aa4ef1, type: 3}
