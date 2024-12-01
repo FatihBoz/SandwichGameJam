@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ShooterTower : Tower
@@ -21,8 +22,17 @@ public class ShooterTower : Tower
 
     private Transform firePoint;
 
+    private bool canAttack = true;
+
     private void Update()
     {
+        if (!canAttack)
+        {
+            Debug.Log("Tower Stunned");
+            return; 
+
+        }
+
         if (target == null)
         {
             Collider2D enemy = Physics2D.OverlapCircle(transform.position, detectRadius, beastLayer);
@@ -47,6 +57,17 @@ public class ShooterTower : Tower
         }
     }
 
+    public void StopAttackingTemporarily(float duration)
+    {
+        StartCoroutine(AttackCooldown(duration));
+    }
+
+    private IEnumerator AttackCooldown(float duration)
+    {
+        canAttack = false; // Atak yapmayı engelle
+        yield return new WaitForSeconds(duration); // Süre dolana kadar bekle
+        canAttack = true; // Süre dolunca atak yapmayı tekrar aktif et
+    }
 
 
     private void FireAtTarget()

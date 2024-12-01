@@ -33,7 +33,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     private float elapsedTimeAfterSecondaryAttack = 0f;
 
-
+    bool isFiring = false;
 
 
     private Animator animator;
@@ -49,13 +49,19 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     private void Update()
     {
+        elapsedTimeAfterSecondaryAttack += Time.deltaTime;
         if (InputReceiver.Instance.GetBeastPlayerSecondaryAttackInput() == 1 &&
             elapsedTimeAfterSecondaryAttack >= secondaryAttackCooldown)
         {
 
+            elapsedTimeAfterSecondaryAttack = 0f;
+
+            Debug.Log("Second Atack casted");
+            CastSecondaryAttack();
         }
 
-        elapsedTimeAfterAttack += Time.deltaTime;
+
+        elapsedTimeAfterSecondaryAttack += Time.deltaTime;
 
         if(Input.GetMouseButtonDown(0) && doubleAttackTime>=elapsedTimeAfterAttack && isAttacking)
         {
