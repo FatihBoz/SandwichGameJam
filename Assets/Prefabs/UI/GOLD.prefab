@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4574759481894034849}
   - component: {fileID: 1419659595421333801}
   m_Layer: 5
-  m_Name: GOLD
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250, y: -22}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.00048447, y: -1.4913}
+  m_SizeDelta: {x: 344.59, y: 66.199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4574759481894034849
 CanvasRenderer:
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.9941864, y: -5.9648438, z: 1.7776337, w: 1.3474731}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 6689576490387860787}
   - component: {fileID: 1734834956682031704}
   m_Layer: 5
-  m_Name: GOLD
+  m_Name: Gold
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

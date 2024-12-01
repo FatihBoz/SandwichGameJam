@@ -9,11 +9,20 @@ public class CycleManager : MonoBehaviour
     int dayCount = 1;
     int increaseDayCount = 0;
 
+    [Header("Camera Options")]
+    public GameObject CameraControl;
+
     [Header("Fade Options")]
     public CanvasGroup blackScreenCanvasGroup; // Siyah ekran
     private bool isFading = false;
     public float fadeDuration = 1f; // Siyahlaþma süresi
     public TextMeshProUGUI CutsceneText;
+
+    [Header("Character Options")]
+    public Transform Beast;
+    public Transform Human;
+    public GameObject BeastPanel;
+    public GameObject HumanPanel;
 
     private bool isMorning = true; // Sabah mý? Akþam mý?
 
@@ -34,6 +43,9 @@ public class CycleManager : MonoBehaviour
 
     void Start()
     {
+        Human.gameObject.SetActive(true);
+        Beast.gameObject.SetActive(false);
+
         // Clock dönüþ hýzýný hesapla
         rotationSpeed = 360f / rotationDuration;
 
@@ -45,7 +57,7 @@ public class CycleManager : MonoBehaviour
 
     private IEnumerator FadeAndReload()
     {
-        Debug.Log("Ýçerideyiz ");
+        CutsceneText.text = $"{(isMorning ? "Morning" : "Night")} / Day {dayCount}";
 
         isFading = true;
 
@@ -61,7 +73,6 @@ public class CycleManager : MonoBehaviour
         blackScreenCanvasGroup.alpha = 1;
 
         // Mesajý göster
-        CutsceneText.text = $"{(isMorning ? "Morning" : "Night")} / Day : {dayCount}"; 
         //CutsceneText.gameObject.SetActive(true);
 
         // Kýsa bir süre bekle
@@ -81,16 +92,10 @@ public class CycleManager : MonoBehaviour
 
     public void ToggleDayNight()
     {
-        Debug.Log("Aloo gün deðiþti alo");
-        StartCoroutine(FadeAndReload()); // Coroutine olarak baþlat
-        if (!isMorning)
+        isMorning = !isMorning;
+        if (increaseDayCount == 1)
         {
-            OnBuildingDisabled?.Invoke();
-        }
 
-        if(increaseDayCount == 1)
-        {
-            
             dayCount++;
             increaseDayCount = 0;
         }
@@ -99,8 +104,37 @@ public class CycleManager : MonoBehaviour
             increaseDayCount++;
 
         }
-        isMorning = !isMorning;
-        dayText.text = $"{(isMorning ? "Morning" : "Night")} / Day : {dayCount}";
+
+        Debug.Log("Aloo gün deðiþti alo");
+        StartCoroutine(FadeAndReload());
+
+        if (isMorning)
+        {
+            CameraControl.GetComponent<CameraControl>().SetTarget(Human);
+
+            Human.gameObject.SetActive(true);
+            Beast.gameObject.SetActive(false);
+
+            HumanPanel.SetActive(true);
+            BeastPanel.SetActive(false);
+        }
+        else
+        {
+            CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
+            Beast.gameObject.SetActive(true);
+            Human.gameObject.SetActive(false);
+
+            HumanPanel.SetActive(false);
+            BeastPanel.SetActive(true);
+        }
+
+        if (!isMorning)
+        {
+            OnBuildingDisabled?.Invoke();
+        }
+
+
+        dayText.text = $"{(isMorning ? "Morning" : "Night")} / Day {dayCount}";
         UpdateSprites();
     }
 
