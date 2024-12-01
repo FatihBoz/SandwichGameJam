@@ -61,6 +61,7 @@ public class PlacementUI : MonoBehaviour
             {
                 playerPurchase.DecreaseGold((int)Tower.price);
                 Tower tower=Instantiate(Tower);
+                //ConstractedBuilds.Instance.AddBuilding(tower, placementLocation);
                 tower.transform.position = new(placementLocation.transform.position.x,placementLocation.transform.position.y + offSetY);
                 placementLocation.gameObject.SetActive(false); 
             }
