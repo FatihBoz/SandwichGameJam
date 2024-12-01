@@ -11,10 +11,14 @@ public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
     private Vector3 dodgeDirection;
     private bool canDodge = true;
 
-    private float lastDodgeTime = -Mathf.Infinity; // Infinity baþlangýçta sýnýrsýz bir bekleme saðlar.
+    private float lastDodgeTime = -Mathf.Infinity; // Infinity baï¿½langï¿½ï¿½ta sï¿½nï¿½rsï¿½z bir bekleme saï¿½lar.
 
     protected override void FixedUpdate()
     {
+        if (isStopped)
+        {
+            return;
+        }
         isGrounded = GroundCheck();
 
         if (isDodging)
@@ -100,4 +104,5 @@ public class BeastPlayerMovement : PlayerMovement, IPlayerMovement
     }
 
     public bool IsInvulnerable => isDodging;
+
 }

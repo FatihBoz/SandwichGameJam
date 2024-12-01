@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -39,16 +40,24 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     private Animator animator;
     private int comboCount=0;
 
+    private bool ded=false;
+
+    public static Action OnDed;
     private void Awake()
     {
         animator=GetComponent<Animator>();
         currentHp = maxHp;
         playerMovement = GetComponent<IPlayerMovement>();
+        
     }
 
 
     private void Update()
     {
+        if (ded)
+        {
+            return;
+        }
         elapsedTimeAfterSecondaryAttack += Time.deltaTime;
         if (InputReceiver.Instance.GetBeastPlayerSecondaryAttackInput() == 1 &&
             elapsedTimeAfterSecondaryAttack >= secondaryAttackCooldown)
@@ -136,6 +145,10 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         {
             //GEBER
             print("geberdin"); //Asla gebermem
+            ded=true;
+            playerMovement.SetIsStopped(true);
+            animator.SetBool("ded",true);
+            OnDed?.Invoke();
         }
 
     }

@@ -29,8 +29,15 @@ public class CameraControl : MonoBehaviour
     private Vector3 desiredPosition;
     private Vector3 smoothedPosition;
 
+
+    private bool ded=false;
+    private float dedTimer;
     private void LateUpdate()
     {
+        if (ded)
+        {
+            Camera.main.orthographicSize-=Time.deltaTime;
+        }
         // Ensure we have a target to follow
         if (target == null)
         {
@@ -81,5 +88,18 @@ public class CameraControl : MonoBehaviour
             1f
         );
         Gizmos.DrawWireCube(center, size);
+    }
+
+    private void OnEnable() {
+        BeastPlayerCombat.OnDed+=dediz;
+    }
+    private void OnDisable() {
+        BeastPlayerCombat.OnDed-=dediz;
+        
+    }
+    private void dediz()
+    {
+        offset.y=0;
+        ded=true;
     }
 }
