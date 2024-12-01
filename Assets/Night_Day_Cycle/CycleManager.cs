@@ -15,7 +15,7 @@ public class CycleManager : MonoBehaviour
     [Header("Fade Options")]
     public CanvasGroup blackScreenCanvasGroup; // Siyah ekran
     private bool isFading = false;
-    public float fadeDuration = 1f; // Siyahlaþma süresi
+    public float fadeDuration = 1f; // Siyahlaï¿½ma sï¿½resi
     public TextMeshProUGUI CutsceneText;
 
     [Header("Character Options")]
@@ -24,16 +24,16 @@ public class CycleManager : MonoBehaviour
     public GameObject BeastPanel;
     public GameObject HumanPanel;
 
-    private bool isMorning = true; // Sabah mý? Akþam mý?
+    private bool isMorning = true; // Sabah mï¿½? Akï¿½am mï¿½?
 
     [Header("Clock Options")]
-    public RectTransform center; // Dönüþ merkezini UI elemaný olarak ayarla
-    public RectTransform movingPoint; // Dönen ibre
-    public float rotationDuration = 10f; // Dönüþ süresi (saniye)
-    private float rotationSpeed; // Derece/saniye dönüþ hýzý
-    private float currentRotation = 0f; // Ýbrenin mevcut rotasyonu
+    public RectTransform center; // Dï¿½nï¿½ï¿½ merkezini UI elemanï¿½ olarak ayarla
+    public RectTransform movingPoint; // Dï¿½nen ibre
+    public float rotationDuration = 10f; // Dï¿½nï¿½ï¿½ sï¿½resi (saniye)
+    private float rotationSpeed; // Derece/saniye dï¿½nï¿½ï¿½ hï¿½zï¿½
+    private float currentRotation = 0f; // ï¿½brenin mevcut rotasyonu
 
-    // SpriteSwitcher objelerini bulmak için
+    // SpriteSwitcher objelerini bulmak iï¿½in
     private ClockSpriteChanger[] spriteSwitchers;
     private SpriteChanger[] generalSpriteSwitchers;
 
@@ -42,15 +42,19 @@ public class CycleManager : MonoBehaviour
     public static Action OnNightStarted;
     public static Action OnDayStarted;
 
+
+    private bool isStopped;
+
     void Start()
     {
+
         Human.gameObject.SetActive(true);
         Beast.gameObject.SetActive(false);
 
-        // Clock dönüþ hýzýný hesapla
+        // Clock dï¿½nï¿½ï¿½ hï¿½zï¿½nï¿½ hesapla
         rotationSpeed = 360f / rotationDuration;
 
-        // Tüm SpriteChanger bileþenlerini bul
+        // Tï¿½m SpriteChanger bileï¿½enlerini bul
         spriteSwitchers = FindObjectsOfType<ClockSpriteChanger>();
 
         UpdateSprites();
@@ -65,7 +69,7 @@ public class CycleManager : MonoBehaviour
         // Oyun durduruluyor
         Time.timeScale = 0;
 
-        // Ekraný siyahlaþtýr
+        // Ekranï¿½ siyahlaï¿½tï¿½r
         for (float t = 0; t <= fadeDuration; t += Time.unscaledDeltaTime)
         {
             blackScreenCanvasGroup.alpha = t / fadeDuration;
@@ -73,7 +77,7 @@ public class CycleManager : MonoBehaviour
         }
         blackScreenCanvasGroup.alpha = 1;
 
-        // Mesajý göster
+        // Mesajï¿½ gï¿½ster
         //CutsceneText.gameObject.SetActive(true);
 
         if (isMorning)
@@ -104,7 +108,7 @@ public class CycleManager : MonoBehaviour
         dayText.text = $"{(isMorning ? "Morning" : "Night")} / Day {dayCount}";
         UpdateSprites();
 
-        // Kýsa bir süre bekle
+        // Kï¿½sa bir sï¿½re bekle
         yield return new WaitForSecondsRealtime(2f);
 
         for (float t = fadeDuration; t >= 0; t -= Time.unscaledDeltaTime)
@@ -178,21 +182,30 @@ public class CycleManager : MonoBehaviour
 
     void Update()
     {
-        // Ýbreyi döndür
+        if (isStopped)
+        {
+            return;
+        }
+
+        // ï¿½breyi dï¿½ndï¿½r
         currentRotation += rotationSpeed * Time.deltaTime;
         movingPoint.localEulerAngles = new Vector3(0, 0, -currentRotation);
 
-        // Tam dönüþ kontrolü (0 ile 360 arasýnda normalize et)
+        // Tam dï¿½nï¿½ï¿½ kontrolï¿½ (0 ile 360 arasï¿½nda normalize et)
         if (currentRotation >= 360f)
         {
             currentRotation -= 360f;
-            ToggleDayNight(); // Dönüþ tamamlanýnca gece-gündüz geçiþi
+            ToggleDayNight(); // Dï¿½nï¿½ï¿½ tamamlanï¿½nca gece-gï¿½ndï¿½z geï¿½iï¿½i
         }
 
-        // Manuel sabah/akþam geçiþi için (Test için T tuþu)
+        // Manuel sabah/akï¿½am geï¿½iï¿½i iï¿½in (Test iï¿½in T tuï¿½u)
         if (Input.GetKeyDown(KeyCode.T))
         {
             ToggleDayNight();
         }
+    }
+    public void SetIsStopped(bool isStopped)
+    {
+        this.isStopped=isStopped;
     }
 }

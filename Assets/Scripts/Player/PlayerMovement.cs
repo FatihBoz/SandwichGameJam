@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     protected bool isRunning;
 
 
+    protected bool isStopped;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -67,6 +69,12 @@ public class PlayerMovement : MonoBehaviour
 
     protected virtual void FixedUpdate()
     {
+        if (isStopped)
+        {
+            rb.velocity=Vector2.zero;
+            return;
+        }
+
         isGrounded = GroundCheck();
 
         if (InputReceiver.Instance.GetBeastPlayerJumpInput() == 1 && isGrounded)
@@ -84,4 +92,9 @@ public class PlayerMovement : MonoBehaviour
     //{
     //    audioSource.PlayOneShot(footStepClip);
     //}
+
+    public void SetIsStopped(bool isStopped)
+    {
+        this.isStopped=isStopped;
+    }
 }

@@ -1,0 +1,305 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1595075474039797427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8766636177937657350}
+  - component: {fileID: 9072578716112393894}
+  - component: {fileID: 2410857038961221698}
+  - component: {fileID: 2084331014722432542}
+  - component: {fileID: 3966920051094812887}
+  - component: {fileID: 2718168633414756751}
+  - component: {fileID: 2827549690881411718}
+  m_Layer: 0
+  m_Name: TutorialManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8766636177937657350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 35.173603, y: 0.45702535, z: 0.03740786}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8502286870323069023}
+  - {fileID: 373322705673104256}
+  - {fileID: 319363114123018532}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9072578716112393894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc938b928e97edc449e8b9d2bcaf7cd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cycleManager: {fileID: 0}
+  tutorials:
+  - {fileID: 2410857038961221698}
+  - {fileID: 3756439770775834270}
+  - {fileID: 2084331014722432542}
+  - {fileID: 3966920051094812887}
+  - {fileID: 2718168633414756751}
+  - {fileID: 8816799525189222959}
+  - {fileID: 2827549690881411718}
+--- !u!114 &2410857038961221698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0bed5066fa4034ea15e26d4d3b7b47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: Movement Course
+  tutorialDescription: Hi, Welcome to Sikgas. You can move around with A and D.
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+  requiredMovementDistance: 15
+--- !u!114 &2084331014722432542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316ce424c5c14ed498f1d86c9cb8b823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: Gold
+  tutorialDescription: Move on UI. Things will be go complex. There is a gold. It
+    shows you how many gold you have. You can purchase tower and something with that
+    gold.
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+  rotateAmount: 44.94
+  position: {x: -397, y: 266, z: 0}
+  arrowPointer: {fileID: 0}
+--- !u!114 &3966920051094812887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402e8b58e511ecb479d28e2b6a059a77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: Hammer
+  tutorialDescription: Now we are getting to build tower. Move next to hammer.
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+  CheckActivenessGO: {fileID: 0}
+--- !u!114 &2718168633414756751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d20edb164c7c494b807c23ededb4a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: kule tip
+  tutorialDescription: Kule tiplerini goruyosun kuzen. Lets select one and build
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+--- !u!114 &2827549690881411718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc58d009dec791428c75e7b55ba1279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: FUCKTOWER
+  tutorialDescription: FUCK THE BUILDED TOWER MOTHERFUCKER
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+--- !u!1 &1603549855842581242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319363114123018532}
+  - component: {fileID: 8816799525189222959}
+  m_Layer: 0
+  m_Name: LetsGoToNight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319363114123018532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603549855842581242}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8766636177937657350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8816799525189222959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603549855842581242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a084a6f3c1f1a545a4a7865758d794e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: wait night.
+  tutorialDescription: Lets go to the knight cousin.
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+  rotateAmount: -32.706
+  position: {x: 342, y: 131, z: 0}
+  arrowPointer: {fileID: 0}
+--- !u!1 &2190119245994793035
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8502286870323069023}
+  - component: {fileID: 3756439770775834270}
+  m_Layer: 0
+  m_Name: fuckUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8502286870323069023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190119245994793035}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8766636177937657350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3756439770775834270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2190119245994793035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316ce424c5c14ed498f1d86c9cb8b823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: Clock and Morning
+  tutorialDescription: Here you can see the current time, the status of the day and
+    what day it is. I have stopped the clock for you, but when you start you will
+    have a limited time until tonight.
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+  rotateAmount: -32.706
+  position: {x: 342, y: 131, z: 0}
+  arrowPointer: {fileID: 0}
+--- !u!1 &2973206116152315834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 373322705673104256}
+  - component: {fileID: 7232271557800876359}
+  m_Layer: 0
+  m_Name: Hammer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &373322705673104256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2973206116152315834}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8766636177937657350}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7232271557800876359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2973206116152315834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 316ce424c5c14ed498f1d86c9cb8b823, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: Hammer
+  tutorialDescription: Now we are getting to build tower. Move next to hammer.
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+  rotateAmount: 0
+  position: {x: -999, y: -999, z: 0}
+  arrowPointer: {fileID: 0}
