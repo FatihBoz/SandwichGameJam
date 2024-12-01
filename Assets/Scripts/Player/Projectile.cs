@@ -20,9 +20,12 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        print("buraya giriyor");
+        print($"Çarpýþan obje: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
         // Eðer çarpan þey bir kule ise
-        if (collision.gameObject.layer == 6)
+        if (collision.gameObject.CompareTag("Tower"))
         {
+            print("buraya giriyor 2");
             if (collision.gameObject.TryGetComponent<ShooterTower>(out var shooterTower))
             {
                 shooterTower.StopAttackingTemporarily(stunTime); // 2 saniye boyunca atak yapmasýný engelle

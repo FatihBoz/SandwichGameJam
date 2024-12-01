@@ -9,14 +9,14 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     private float currentHp;
     private bool isInvulnerable;
     private IPlayerMovement playerMovement;
-    
+
 
     [Header("***ATTACK***")]
+    [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackCooldown = 2f;
     [SerializeField] float attackRadius = 1f;
     [SerializeField] int attackDamage = 10;
     [SerializeField] LayerMask towerLayer;
-    [SerializeField] float attackAngle = 90f;
 
     public float doubleAttackTime = 0.1f;
 
@@ -53,7 +53,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         if (InputReceiver.Instance.GetBeastPlayerSecondaryAttackInput() == 1 &&
             elapsedTimeAfterSecondaryAttack >= secondaryAttackCooldown)
         {
-
+            
             elapsedTimeAfterSecondaryAttack = 0f;
 
             Debug.Log("Second Atack casted");
@@ -61,7 +61,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         }
 
 
-        elapsedTimeAfterSecondaryAttack += Time.deltaTime;
+        elapsedTimeAfterAttack += Time.deltaTime;
 
         if(Input.GetMouseButtonDown(0) && doubleAttackTime>=elapsedTimeAfterAttack && isAttacking)
         {
@@ -83,18 +83,13 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
     {
         Vector2 attackDirection = (Vector2)transform.up;
 
-        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(transform.position, attackRadius, towerLayer);
+        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(attackPoint.position, attackRadius, towerLayer);
 
         foreach (Collider2D enemy in enemiesHit)
         {
-            Vector2 toEnemy = (enemy.transform.position - transform.position).normalized;
-            float angle = Vector2.Angle(attackDirection, toEnemy);
-            if (angle < attackAngle)
+            if (enemy.TryGetComponent<Tower>(out var tower))
             {
-                if (enemy.TryGetComponent<Tower>(out var tower))
-                {
-                    tower.TakeDamage(15);
-                }
+                tower.TakeDamage(15);
             }
         }
 
