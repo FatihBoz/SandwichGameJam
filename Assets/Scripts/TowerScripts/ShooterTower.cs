@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class ShooterTower : Tower
 {
-    public TextManager textManager;
-
     public Transform firePointRight;
     public Transform firePointLeft;
 

@@ -8,12 +8,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength;
 
+    //[Header("***AUDIO***")]
+    //[SerializeField] private AudioSource audioSource;
+    //[SerializeField] private AudioClip footStepClip;
+
     protected bool isGrounded;
 
     protected Rigidbody2D rb;
     protected Animator animator;
     protected float playerScale;
     protected bool isRunning;
+
 
     private void Awake()
     {
@@ -73,4 +78,10 @@ public class PlayerMovement : MonoBehaviour
         RotatePlayer();
         Animate();
     }
+
+    //animation event
+    //public void FootStep()
+    //{
+    //    audioSource.PlayOneShot(footStepClip);
+    //}
 }
