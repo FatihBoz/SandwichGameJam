@@ -9,33 +9,20 @@ public class CameraControl : MonoBehaviour
 
     // Camera movement parameters
     [Header("Camera Movement")]
-    [Tooltip("How quickly the camera moves to follow the target")]
     [Range(0f, 10f)]
     public float smoothSpeed = 5f;
-
-    [Tooltip("Offset from the target's position")]
     public Vector3 offset = new Vector3(0f, 1f, -10f);
 
     // Horizontal and vertical bounds
     [Header("Camera Bounds")]
-    [Tooltip("Minimum X position the camera can reach")]
     public float minX = float.MinValue;
-
-    [Tooltip("Maximum X position the camera can reach")]
     public float maxX = float.MaxValue;
-
-    [Tooltip("Minimum Y position the camera can reach")]
     public float minY = float.MinValue;
-
-    [Tooltip("Maximum Y position the camera can reach")]
     public float maxY = float.MaxValue;
 
     // Tracking mode settings
     [Header("Tracking Mode")]
-    [Tooltip("If true, camera will only move horizontally")]
     public bool horizontalOnlyTracking = false;
-
-    [Tooltip("If true, camera will only move vertically")]
     public bool verticalOnlyTracking = false;
 
     // Internal calculation variables

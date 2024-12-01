@@ -36,10 +36,17 @@ public class InputReceiver : MonoBehaviour
         return beastPlayer.Beast.Attack.ReadValue<float>();
     }
 
+    public float GetBeastPlayerSecondaryAttackInput()
+    {
+        return beastPlayer.Beast.SecondaryAttack.ReadValue<float>();
+    }
+
     public float GetBeastPlayerJumpInput()
     {
         return beastPlayer.Beast.Jump.ReadValue<float>();
     }
+
+    
 
     #endregion  
 
