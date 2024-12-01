@@ -13,8 +13,8 @@ public abstract class TutorialBase : MonoBehaviour
     [SerializeField] protected string tutorialDescription;
     
     [Header("UI References")]
-    [SerializeField] protected GameObject tutorialPanel;
-    [SerializeField] protected TMP_Text descriptionText;
+    [SerializeField] public GameObject tutorialPanel;
+    [SerializeField] public TMP_Text descriptionText;
     
     // Event triggered when tutorial is completed
     public event Action OnTutorialCompleted;

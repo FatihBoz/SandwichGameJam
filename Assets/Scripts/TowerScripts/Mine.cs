@@ -10,7 +10,8 @@ public class Mine : MonoBehaviour
 
     private int goldAmount = 5;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+  
+     void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -21,7 +22,7 @@ public class Mine : MonoBehaviour
             gainable = true;
         }
     }
-    private void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {

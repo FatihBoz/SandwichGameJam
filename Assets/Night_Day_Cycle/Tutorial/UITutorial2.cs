@@ -17,22 +17,20 @@ public class UITutorial2 : TutorialBase
 
     protected override void SetupTutorial()
     {
-        cycleManager=FindObjectOfType<CycleManager>();
+
+       arrowPointer.gameObject.SetActive(true);
+       arrowPointer.eulerAngles=new Vector3(0,0,rotateAmount);
+        arrowPointer.localPosition=position;
+        cycleManager.SetIsStopped(false);
+    }
+    private void Start() {
+                cycleManager=FindObjectOfType<CycleManager>();
         CycleManager.OnNightStarted+=CompleteTutorial;
     }
 
     private void Update()
     {
     
-    }
-    public override void StartTutorial()
-    {
-        base.StartTutorial();
-       arrowPointer.gameObject.SetActive(true);
-       arrowPointer.eulerAngles=new Vector3(0,0,rotateAmount);
-        arrowPointer.localPosition=position;
-        cycleManager.SetIsStopped(false);
-
     }
     protected override void CompleteTutorial()
     {

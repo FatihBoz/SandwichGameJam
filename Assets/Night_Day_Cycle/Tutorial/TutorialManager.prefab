@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3966920051094812887}
   - component: {fileID: 2718168633414756751}
   - component: {fileID: 2827549690881411718}
+  - component: {fileID: 4549357846011055429}
   m_Layer: 0
   m_Name: TutorialManager
   m_TagString: Untagged
@@ -36,7 +37,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8502286870323069023}
-  - {fileID: 373322705673104256}
   - {fileID: 319363114123018532}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56,10 +56,13 @@ MonoBehaviour:
   - {fileID: 2410857038961221698}
   - {fileID: 2084331014722432542}
   - {fileID: 3756439770775834270}
+  - {fileID: 4549357846011055429}
   - {fileID: 3966920051094812887}
   - {fileID: 2718168633414756751}
   - {fileID: 8816799525189222959}
   - {fileID: 2827549690881411718}
+  panel: {fileID: 0}
+  text: {fileID: 0}
 --- !u!114 &2410857038961221698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialName: Gold
   tutorialDescription: Move on UI. There is a gold. It shows you how many gold you
-    have. You can purchase tower and something with that gold.
+    have. You can purchase tower and something with that gold. (Click to continue)
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
   rotateAmount: 33.893
@@ -110,7 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialName: Hammer
-  tutorialDescription: Now we are getting to build tower. Move next to hammer.
+  tutorialDescription: We have gold now. Now we are getting to build tower. Move
+    next to hammer.
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
   CheckActivenessGO: {fileID: 0}
@@ -144,6 +148,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialName: FUCKTOWER
   tutorialDescription: FUCK THE BUILDED TOWER MOTHERFUCKER
+  tutorialPanel: {fileID: 0}
+  descriptionText: {fileID: 0}
+--- !u!114 &4549357846011055429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595075474039797427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db3a447469e787f4f9b50995faca83fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialName: kuzen
+  tutorialDescription: kuzen para kasalim gel. madene gidip e basarak kasiyoruz.
+    goreyim kastigini
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
 --- !u!1 &1603549855842581242
@@ -191,7 +212,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialName: wait night.
-  tutorialDescription: Lets go to the knight cousin.
+  tutorialDescription: We built tower and I have started time. Wait for the knight
+    cousin.
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
   rotateAmount: -32.706
@@ -244,60 +266,9 @@ MonoBehaviour:
   tutorialName: Clock and Morning
   tutorialDescription: Here you can see the current time, the status of the day and
     what day it is. I have stopped the clock for you, but when you start you will
-    have a limited time until tonight.
+    have a limited time until tonight. (Click to continue)
   tutorialPanel: {fileID: 0}
   descriptionText: {fileID: 0}
   rotateAmount: -32.706
   position: {x: 306, y: -287, z: 0}
-  arrowPointer: {fileID: 0}
---- !u!1 &2973206116152315834
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 373322705673104256}
-  - component: {fileID: 7232271557800876359}
-  m_Layer: 0
-  m_Name: Hammer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &373322705673104256
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2973206116152315834}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8766636177937657350}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7232271557800876359
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2973206116152315834}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 316ce424c5c14ed498f1d86c9cb8b823, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialName: Hammer
-  tutorialDescription: Now we are getting to build tower. Move next to hammer.
-  tutorialPanel: {fileID: 0}
-  descriptionText: {fileID: 0}
-  rotateAmount: 0
-  position: {x: -999, y: -999, z: 0}
   arrowPointer: {fileID: 0}

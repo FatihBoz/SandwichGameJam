@@ -26,8 +26,11 @@ public class EnergyBond : MonoBehaviour
     [SerializeField] private float detectRadius = 7.5f;
     [SerializeField] private LayerMask beastLayer;
 
+    private Tower tower;
+
     void Start()
     {
+        tower = GetComponent<Tower>();
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.positionCount = segmentCount;
         lineRenderer.enabled = false; // Baþlangýçta çizgi gizli
@@ -35,6 +38,14 @@ public class EnergyBond : MonoBehaviour
 
     void Update()
     {
+
+        if (!tower.canAttack)
+        {
+            print("energy bond");
+            lineRenderer.enabled = false;
+            return;
+        }
+
         if (target == null)
         {
             Collider2D enemy = Physics2D.OverlapCircle(transform.position, detectRadius, beastLayer);

@@ -22,11 +22,9 @@ public class ShooterTower : Tower
 
     private Transform firePoint;
 
-    private bool canAttack = true;
-
     private void Update()
     {
-        if (!canAttack)
+        if (!tower.canAttack)
         {
             Debug.Log("Tower Stunned");
             return; 
@@ -57,17 +55,6 @@ public class ShooterTower : Tower
         }
     }
 
-    public void StopAttackingTemporarily(float duration)
-    {
-        StartCoroutine(AttackCooldown(duration));
-    }
-
-    private IEnumerator AttackCooldown(float duration)
-    {
-        canAttack = false; // Atak yapmayı engelle
-        yield return new WaitForSeconds(duration); // Süre dolana kadar bekle
-        canAttack = true; // Süre dolunca atak yapmayı tekrar aktif et
-    }
 
 
     private void FireAtTarget()

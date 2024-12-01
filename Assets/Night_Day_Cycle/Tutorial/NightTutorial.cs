@@ -17,7 +17,7 @@ public class NightTutorial : TutorialBase
         }
         return true;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (isActive && CheckTutorialCompletion())
         {
@@ -29,4 +29,5 @@ public class NightTutorial : TutorialBase
        mainTower = FindAnyObjectByType<MainTower>();
         
     }
+
 }

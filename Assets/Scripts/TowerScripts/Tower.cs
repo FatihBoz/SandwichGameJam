@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -13,9 +14,18 @@ public class Tower : MonoBehaviour
     private GameObject placementTestPrefab;
     private float missingHealthPercentageToHeal = .5f;
 
+    public bool canAttack = true;
+    protected Tower tower;
+
+    private void Awake()
+    {
+        canAttack = true;
+    }
+
     protected virtual void Start()
     {
         currentHealth = maxHealth;
+        tower = GetComponent<Tower>();
     }
 
     public void TakeDamage(float damage)
@@ -50,6 +60,18 @@ public class Tower : MonoBehaviour
         placementTestPrefab = placement;
     }
 
+    public void StopAttack(float silenceTime)
+    {
+        print("towera giriyor");
+        canAttack = false;
+        StartCoroutine(WaitForAttack(silenceTime));
+    }
+
+    private IEnumerator WaitForAttack(float silenceTime)
+    {
+        yield return new WaitForSeconds(silenceTime);
+        canAttack = true;
+    }
 
     private void Tower_OnDayStarted()
     {
