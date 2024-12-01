@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -20,20 +21,29 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("buraya giriyor");
-        print($"Çarpýþan obje: {collision.gameObject.name}, Tag: {collision.gameObject.tag}");
-        // Eðer çarpan þey bir kule ise
-        if (collision.gameObject.CompareTag("Tower"))
+        if (collision.gameObject.TryGetComponent<Tower>(out var tower))
         {
-            print("buraya giriyor 2");
-            if (collision.gameObject.TryGetComponent<ShooterTower>(out var shooterTower))
-            {
-                shooterTower.StopAttackingTemporarily(stunTime); // 2 saniye boyunca atak yapmasýný engelle
-            }
-            collision.gameObject.GetComponent<Tower>().TakeDamage(damageAmount);
-
+            print("buraya giriyor");
+            tower.TakeDamage(15);
+            tower.StopAttack(stunTime);
             // Projectile'i yok et
             Destroy(gameObject);
         }
+    }
+
+
+    private void Projectile_OnDayStarted()
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnEnable()
+    {
+        CycleManager.OnDayStarted += Projectile_OnDayStarted;
+    }
+
+    private void OnDisable()
+    {
+        CycleManager.OnDayStarted -= Projectile_OnDayStarted;
     }
 }
