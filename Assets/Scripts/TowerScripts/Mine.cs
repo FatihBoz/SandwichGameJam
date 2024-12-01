@@ -13,8 +13,12 @@ public class Mine : MonoBehaviour
   
      void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Giriyoooooo");
+
         if (collision.gameObject.CompareTag("Player"))
         {
+            Debug.Log("aaa player");
+
             PlayerGameObject = collision.gameObject;
 
             GainGoldPanel.SetActive(true);
@@ -24,6 +28,7 @@ public class Mine : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D collision)
     {
+        Debug.Log("Giriyoooooo");
         if (collision.gameObject.CompareTag("Player"))
         {
             GainGoldPanel.SetActive(false);

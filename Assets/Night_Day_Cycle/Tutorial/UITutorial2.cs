@@ -25,8 +25,17 @@ public class UITutorial2 : TutorialBase
     }
     private void Start() {
                 cycleManager=FindObjectOfType<CycleManager>();
-        CycleManager.OnNightStarted+=CompleteTutorial;
     }
+    private void OnEnable()
+    {
+        CycleManager.OnNightStarted+=CompleteTutorial;
+
+    }
+    private void OnDisable()
+    {
+        CycleManager.OnNightStarted-=CompleteTutorial;
+    }
+
 
     private void Update()
     {
