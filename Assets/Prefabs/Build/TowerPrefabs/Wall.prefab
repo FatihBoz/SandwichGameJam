@@ -192,10 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c442d20444316a9499322ca2cd8c5479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  price: 100
+  price: 30
   towerIcon: {fileID: 21300000, guid: 49f00407db355174e9bbee5672279e73, type: 3}
   maxHealth: 100
   myHealthBar: {fileID: 5465612395302837263}
+  canAttack: 1
 --- !u!61 &-3698780866825605999
 BoxCollider2D:
   m_ObjectHideFlags: 0
