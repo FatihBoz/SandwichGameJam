@@ -91,24 +91,24 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     public void TakeDamage(float damageAmount)
     {
-        //if (playerMovement.IsInvulnerable)
-        //{
-        //    return;
-        //}
+        if (playerMovement.IsInvulnerable)
+        {
+            return;
+        }
 
-        ////HASAR AZALTMA EFEKT� YOKSA
+        //HASAR AZALTMA EFEKT� YOKSA
 
-        //currentHp -= damageAmount;
+        currentHp -= damageAmount;
 
-        //beastHealthBar.fillAmount = currentHp / maxHp;
+        beastHealthBar.fillAmount = currentHp / maxHp;
 
-        //textmanager.ShowDamageText(damageAmount);
+        textmanager.ShowDamageText(damageAmount);
 
-        //if (currentHp <= 0)
-        //{
-        //    //GEBER
-        //    print("geberdin"); //Asla gebermem
-        //}
+        if (currentHp <= 0)
+        {
+            //GEBER
+            print("geberdin"); //Asla gebermem
+        }
 
     }
 }
