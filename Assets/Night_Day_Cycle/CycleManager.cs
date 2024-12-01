@@ -21,9 +21,10 @@ public class CycleManager : MonoBehaviour
     [Header("Character Options")]
     public Transform Beast;
     public Transform Human;
+    public GameObject BeastPanel;
+    public GameObject HumanPanel;
 
     private bool isMorning = true; // Sabah mý? Akþam mý?
-    private bool isHuman = true;
 
     [Header("Clock Options")]
     public RectTransform center; // Dönüþ merkezini UI elemaný olarak ayarla
@@ -113,12 +114,18 @@ public class CycleManager : MonoBehaviour
 
             Human.gameObject.SetActive(true);
             Beast.gameObject.SetActive(false);
+
+            HumanPanel.SetActive(true);
+            BeastPanel.SetActive(false);
         }
         else
         {
             CameraControl.GetComponent<CameraControl>().SetTarget(Beast);
             Beast.gameObject.SetActive(true);
             Human.gameObject.SetActive(false);
+
+            HumanPanel.SetActive(false);
+            BeastPanel.SetActive(true);
         }
 
         if (!isMorning)
