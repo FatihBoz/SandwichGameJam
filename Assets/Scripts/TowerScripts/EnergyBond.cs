@@ -23,7 +23,7 @@ public class EnergyBond : MonoBehaviour
 
 
     private GameObject target;
-    [SerializeField] private float detectRadius = 7.5f;
+    [SerializeField] private float detectRadius = 15f;
     [SerializeField] private LayerMask beastLayer;
 
     private Tower tower;

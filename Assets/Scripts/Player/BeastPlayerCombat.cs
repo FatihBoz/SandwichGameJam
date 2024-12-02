@@ -97,6 +97,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
         if (Input.GetMouseButtonDown(0) && elapsedTimeAfterAttack >= attackCooldown && !isDoubleAttacking)
         {
+            print("ilk vuruşa girdi");
             isAttacking=true;
            // Attack();
             elapsedTimeAfterAttack = 0;
@@ -174,15 +175,32 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         animator.SetBool("ded", true);
     }
 
+    private void Beast_OnDayStarted()
+    {
+        isAttacking = false;
+        isDoubleAttacking = false;  
+        GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+        if (gameObject.TryGetComponent<PlayerMovement>(out var movement))
+        {
+            movement.enabled = true;
+        }
+        TakeDamage(-(maxHp - currentHp) * 0.5f);
+
+    }
+
 
     private void OnEnable()
     {
         BeastPlayerCombat.OnDed += BPC_OnDeath;
+        CycleManager.OnDayStarted += Beast_OnDayStarted;
     }
+
+
 
     private void OnDisable()
     {
         BeastPlayerCombat.OnDed -= BPC_OnDeath;
+        CycleManager.OnDayStarted -= Beast_OnDayStarted;
     }
 
 

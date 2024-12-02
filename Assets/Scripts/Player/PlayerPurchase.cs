@@ -7,7 +7,7 @@ public class PlayerPurchase : MonoBehaviour
 {
     public int currentGold;
     private int tempGold;
-    int maxGoldCanBeGained = 200;
+    int maxGoldCanBeGained = 150;
 
     public void AddGold(int amount)
     {

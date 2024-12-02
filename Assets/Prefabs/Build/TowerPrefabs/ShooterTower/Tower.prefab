@@ -112,8 +112,8 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3684478397050195379, guid: 9cda5d8f0697d594da80fea0c504d785, type: 3}
   projectileSpeed: 50
   fireRate: 1
-  detectionRange: 10
-  detectRadius: 8.75
+  detectionRange: 15
+  detectRadius: 12.5
   beastLayer:
     serializedVersion: 2
     m_Bits: 256
