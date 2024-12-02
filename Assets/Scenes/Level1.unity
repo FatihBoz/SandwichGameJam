@@ -612,7 +612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5600831922757790605, guid: fd1990e35bb0b3f4fa09e416c97c9618, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6326791331881202166, guid: fd1990e35bb0b3f4fa09e416c97c9618, type: 3}
       propertyPath: m_LocalPosition.x
@@ -634,7 +634,8 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: -1.8164572
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4371472524543874225, guid: fd1990e35bb0b3f4fa09e416c97c9618, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2188,6 +2189,14 @@ PrefabInstance:
       value: Tower Types
       objectReference: {fileID: 0}
     - target: {fileID: 2718168633414756751, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: 1553795161}
+    - target: {fileID: 2718168633414756751, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
+      propertyPath: playerPurchase
+      value: 
+      objectReference: {fileID: 1553795156}
+    - target: {fileID: 2718168633414756751, guid: c8e026d406face146bf67f7ee3ad4478, type: 3}
       propertyPath: tutorialDescription
       value: Those are the types of towers. Select one and build it.
       objectReference: {fileID: 0}
@@ -3585,6 +3594,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3096731172479623374, guid: dea81643cab75bd43b977ef26bf5088f, type: 3}
   m_PrefabInstance: {fileID: 585296871}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1553795156 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7204850263334383622, guid: dea81643cab75bd43b977ef26bf5088f, type: 3}
+  m_PrefabInstance: {fileID: 585296871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec49f35542a6b3342a2e0b163c7211e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1553795161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5359288432999472509, guid: dea81643cab75bd43b977ef26bf5088f, type: 3}
+  m_PrefabInstance: {fileID: 585296871}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1792d0ef92a9fd469c8dfc71d3013bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1582193314
 GameObject:
   m_ObjectHideFlags: 0

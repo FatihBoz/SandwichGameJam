@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BuildTutorial2 : TutorialBase
 {
+    [SerializeField]
     private PlayerPurchase playerPurchase;
+    [SerializeField]
     private PlayerMovement playerMovement;
     private int currentGold;
 
@@ -15,13 +17,11 @@ public class BuildTutorial2 : TutorialBase
 
     protected override void SetupTutorial()
     {
-
-        
         playerMovement.SetIsStopped(true);
         currentGold=playerPurchase.GetCurrentGold();
     }
     private void Start() {
-                playerPurchase=FindObjectOfType<PlayerPurchase>();
+        playerPurchase=FindObjectOfType<PlayerPurchase>();
         playerMovement=FindObjectOfType<PlayerMovement>();
     }
        private void Update()

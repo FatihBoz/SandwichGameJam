@@ -6,14 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 72b99e32436039b41914b91236c56b53
-  - enabled: 1
-    path: Assets/Scenes/FatihScene.unity
-    guid: 47f96ad3366852f4b9819b73a184c9f3
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 158d3f87b9905a240885190d8caba697

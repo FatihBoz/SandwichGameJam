@@ -11,7 +11,6 @@ public class PlayerPurchase : MonoBehaviour
 
     public void AddGold(int amount)
     {
-
         tempGold += amount;
         if (tempGold  < maxGoldCanBeGained)
         {
@@ -30,7 +29,7 @@ public class PlayerPurchase : MonoBehaviour
 
     private void OnEnable()
     {
-        CycleManager.OnDayStarted += PlayerPurchase_DayStart;
+        CycleManager.OnNightStarted += PlayerPurchase_DayStart;
     }
 
     private void PlayerPurchase_DayStart()
@@ -40,6 +39,6 @@ public class PlayerPurchase : MonoBehaviour
 
     private void OnDisable()
     {
-        CycleManager.OnDayStarted -= PlayerPurchase_DayStart;
+        CycleManager.OnNightStarted -= PlayerPurchase_DayStart;
     }
 }
