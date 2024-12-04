@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform raycastShootPoint;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rayLength;
+    [SerializeField] private float waitingTimeWhenBuilding;
 
     //[Header("***AUDIO***")]
     //[SerializeField] private AudioSource audioSource;
@@ -97,4 +100,35 @@ public class PlayerMovement : MonoBehaviour
     {
         this.isStopped=isStopped;
     }
+
+    private void OnEnable()
+    {
+        isStopped = false;
+        PlacementUI.Instance.OnTowerBuilded += Player_OnTowerBuilded;
+    }
+
+    private void Player_OnTowerBuilded()
+    {
+        if (waitingTimeWhenBuilding <= 0)
+        {
+            return;
+        }
+
+        animator.SetTrigger("Build");
+        StartCoroutine(DelayedMovement());
+       
+    }
+
+    private IEnumerator DelayedMovement()
+    {
+        isStopped = true;
+        yield return new WaitForSeconds(waitingTimeWhenBuilding);
+        isStopped = false;
+    }
+
+    private void OnDisable()
+    {
+        PlacementUI.Instance.OnTowerBuilded -= Player_OnTowerBuilded;
+    }
+
 }

@@ -1,21 +1,30 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerPurchase : MonoBehaviour
 {
+    public static PlayerPurchase Instance;
     public int currentGold;
     private int tempGold;
-    int maxGoldCanBeGained = 150;
+    int maxGoldCanBeGained = 100;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void AddGold(int amount)
     {
-        tempGold += amount;
         if (tempGold  < maxGoldCanBeGained)
         {
+            tempGold += amount;
             currentGold += amount;
         }
+    }
+
+    public void AddGoldForDayStart(int amount)
+    {
+        currentGold += amount;
     }
 
     public void DecreaseGold(int amount)
@@ -27,18 +36,9 @@ public class PlayerPurchase : MonoBehaviour
         return currentGold;
     }
 
-    private void OnEnable()
+    public void ResetTempGold()
     {
-        CycleManager.OnNightStarted += PlayerPurchase_DayStart;
-    }
-
-    private void PlayerPurchase_DayStart()
-    {
+        print("temp gold sýfýrlandý");
         tempGold = 0;
-    }
-
-    private void OnDisable()
-    {
-        CycleManager.OnNightStarted -= PlayerPurchase_DayStart;
     }
 }

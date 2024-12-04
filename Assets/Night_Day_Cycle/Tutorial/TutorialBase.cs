@@ -2,9 +2,6 @@ using UnityEngine;
 using System;
 using TMPro;
 
-/// <summary>
-/// Base class for different types of tutorials in the game
-/// </summary>
 
 [Serializable]
 public abstract class TutorialBase : MonoBehaviour

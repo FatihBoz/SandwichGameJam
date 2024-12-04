@@ -136,6 +136,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
 
     private void CastSecondaryAttack()
     {
+        animator.SetTrigger("SecondaryAttack");
         GameObject projectile = Instantiate(projectilePrefab, shootPoint.position, Quaternion.identity);
         Vector2 initialScale = projectile.transform.localScale;
 
@@ -184,7 +185,7 @@ public class BeastPlayerCombat : MonoBehaviour,IPlayerCombat
         {
             movement.enabled = true;
         }
-        TakeDamage(-(maxHp - currentHp) * 0.5f);
+        TakeDamage(-(maxHp - currentHp) * 0.25f);
 
     }
 

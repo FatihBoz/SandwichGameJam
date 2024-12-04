@@ -31,11 +31,11 @@ public class CycleManager : MonoBehaviour
     private bool isMorning = true; // Sabah m�? Ak�am m�?
 
     [Header("Clock Options")]
-    public RectTransform center; // D�n�� merkezini UI eleman� olarak ayarla
-    public RectTransform movingPoint; // D�nen ibre
-    public float rotationDuration = 10f; // D�n�� s�resi (saniye)
-    private float rotationSpeed; // Derece/saniye d�n�� h�z�
-    private float currentRotation = 0f; // �brenin mevcut rotasyonu
+    public RectTransform center;
+    public RectTransform movingPoint;
+    public float rotationDuration = 10f;
+    private float rotationSpeed;
+    private float currentRotation = 0f;
 
     // SpriteSwitcher objelerini bulmak i�in
     private ClockSpriteChanger[] spriteSwitchers;
@@ -107,7 +107,8 @@ public class CycleManager : MonoBehaviour
             HumanPanel.SetActive(true);
             BeastPanel.SetActive(false);
 
-            Human.gameObject.GetComponent<PlayerPurchase>().AddGold(100);
+            PlayerPurchase.Instance.AddGoldForDayStart(75);
+            PlayerPurchase.Instance.ResetTempGold();
         }
         else
         {

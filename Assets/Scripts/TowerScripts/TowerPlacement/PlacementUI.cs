@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,11 +7,15 @@ using UnityEngine.UI;
 public class PlacementUI : MonoBehaviour
 {
     public static PlacementUI Instance{get;private set;}
+    public Action OnTowerBuilded;
     public Placement placementLocation;
     public TowerImage towerIconPrefab;
     public Transform towerIconParent;
     public Transform towerList;
     private List<TowerImage> selectableImages;
+
+
+    bool canBuild;
 
     [SerializeField] private float offSetY = 3f;
 
@@ -57,8 +62,9 @@ public class PlacementUI : MonoBehaviour
         PlayerPurchase playerPurchase = FindAnyObjectByType<PlayerPurchase>();
         if (playerPurchase!=null)
         {
-            if (playerPurchase.GetCurrentGold()>=Tower.price)
+            if (playerPurchase.GetCurrentGold()>=Tower.price && canBuild)
             {
+                OnTowerBuilded?.Invoke();
                 playerPurchase.DecreaseGold((int)Tower.price);
                 Tower tower=Instantiate(Tower);
                 tower.SetPlacement(placementLocation.gameObject);
@@ -69,4 +75,21 @@ public class PlacementUI : MonoBehaviour
         }
     }
     }
+
+    private void Placement_OnMineTutorialCompleted()
+    {
+        canBuild = true;
+    }
+
+    private void OnEnable()
+    {
+        MineTutorial.OnMineTutorialCompleted += Placement_OnMineTutorialCompleted;
+    }
+
+    private void OnDisable()
+    {
+        MineTutorial.OnMineTutorialCompleted -= Placement_OnMineTutorialCompleted;
+    }
+
+
 }
